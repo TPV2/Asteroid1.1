@@ -1,0 +1,80 @@
+﻿G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\TPV2.vcxproj(162,5): warning MSB4011: "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\SDLProject.props" no se puede volver a importar. Ya se importó en "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\TPV2.vcxproj (161,5)". Lo más probable es que se trate de un error al crear la compilación. Se omitirá esta importación. 
+  Asteroids.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Asteroid.h(42,12): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Bullet.h(15,1): warning C4099: 'Bullet': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Bullet.h(14): message : vea la declaración de 'Bullet'
+  BulletsMotion.cpp
+  GameCtrl.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Asteroid.h(42,12): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Bullet.h(15,1): warning C4099: 'Bullet': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Bullet.h(14): message : vea la declaración de 'Bullet'
+  GameLogic.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Asteroid.h(42,12): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Bullet.h(15,1): warning C4099: 'Bullet': nombre de tipo visto anteriormente usando 'class' ahora se ve usando 'struct'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\TPV2\Bullet.h(14): message : vea la declaración de 'Bullet'
+  Generando código...
+     Creando biblioteca G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\bin\TPV2Debug.lib y objeto G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\bin\TPV2Debug.exp
+Font.obj : error LNK2019: símbolo externo TTF_OpenFont sin resolver al que se hace referencia en la función "public: bool __cdecl Font::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,int)" (?load@Font@@QEAA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z)
+Font.obj : error LNK2019: símbolo externo TTF_RenderText_Solid sin resolver al que se hace referencia en la función "public: struct SDL_Surface * __cdecl Font::renderText(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,struct SDL_Color)const " (?renderText@Font@@QEBAPEAUSDL_Surface@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@USDL_Color@@@Z)
+Font.obj : error LNK2019: símbolo externo TTF_CloseFont sin resolver al que se hace referencia en la función "public: void __cdecl Font::close(void)" (?close@Font@@QEAAXXZ)
+Gun.obj : error LNK2019: símbolo externo SDL_GetScancodeFromKey sin resolver al que se hace referencia en la función "public: bool __cdecl InputHandler::isKeyDown(int)" (?isKeyDown@InputHandler@@QEAA_NH@Z)
+Asteroids.obj : error LNK2001: símbolo externo SDL_GetScancodeFromKey sin resolver
+FighterCtrl.obj : error LNK2001: símbolo externo SDL_GetScancodeFromKey sin resolver
+InputHandler.obj : error LNK2019: símbolo externo SDL_GetKeyboardState sin resolver al que se hace referencia en la función "private: __cdecl InputHandler::InputHandler(void)" (??0InputHandler@@AEAA@XZ)
+InputHandler.obj : error LNK2019: símbolo externo SDL_PollEvent sin resolver al que se hace referencia en la función "public: void __cdecl InputHandler::update(void)" (?update@InputHandler@@QEAAXXZ)
+Asteroids.obj : error LNK2019: símbolo externo SDL_GetWindowFlags sin resolver al que se hace referencia en la función "private: void __cdecl Asteroids::handleInput(void)" (?handleInput@Asteroids@@AEAAXXZ)
+Asteroids.obj : error LNK2019: símbolo externo SDL_SetWindowFullscreen sin resolver al que se hace referencia en la función "private: void __cdecl Asteroids::handleInput(void)" (?handleInput@Asteroids@@AEAAXXZ)
+Asteroids.obj : error LNK2019: símbolo externo SDL_SetRenderDrawColor sin resolver al que se hace referencia en la función "private: void __cdecl Asteroids::render(void)" (?render@Asteroids@@AEAAXXZ)
+Rectangle.obj : error LNK2001: símbolo externo SDL_SetRenderDrawColor sin resolver
+SDLGame.obj : error LNK2001: símbolo externo SDL_SetRenderDrawColor sin resolver
+Asteroids.obj : error LNK2019: símbolo externo SDL_RenderClear sin resolver al que se hace referencia en la función "private: void __cdecl Asteroids::render(void)" (?render@Asteroids@@AEAAXXZ)
+SDLGame.obj : error LNK2001: símbolo externo SDL_RenderClear sin resolver
+Asteroids.obj : error LNK2019: símbolo externo SDL_RenderPresent sin resolver al que se hace referencia en la función "private: void __cdecl Asteroids::render(void)" (?render@Asteroids@@AEAAXXZ)
+SDLGame.obj : error LNK2001: símbolo externo SDL_RenderPresent sin resolver
+Asteroids.obj : error LNK2019: símbolo externo SDL_GetTicks sin resolver al que se hace referencia en la función "public: unsigned int __cdecl SDLGame::getTime(void)" (?getTime@SDLGame@@QEAAIXZ)
+Asteroids.obj : error LNK2019: símbolo externo SDL_Delay sin resolver al que se hace referencia en la función "public: void __cdecl Asteroids::start(void)" (?start@Asteroids@@QEAAXXZ)
+Rectangle.obj : error LNK2019: símbolo externo SDL_RenderFillRect sin resolver al que se hace referencia en la función "public: virtual void __cdecl Rectangle::draw(void)" (?draw@Rectangle@@UEAAXXZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo SDL_RWFromFile sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::loadSound(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadSound@SDLAudioManager@@UEAA_NHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_Init sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::init(void)" (?init@SDLAudioManager@@UEAA_NXZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_Quit sin resolver al que se hace referencia en la función "public: virtual __cdecl SDLAudioManager::~SDLAudioManager(void)" (??1SDLAudioManager@@UEAA@XZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_OpenAudio sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::init(void)" (?init@SDLAudioManager@@UEAA_NXZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_AllocateChannels sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::init(void)" (?init@SDLAudioManager@@UEAA_NXZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_LoadWAV_RW sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::loadSound(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadSound@SDLAudioManager@@UEAA_NHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_LoadMUS sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::loadMusic(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadMusic@SDLAudioManager@@UEAA_NHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_FreeChunk sin resolver al que se hace referencia en la función "public: virtual __cdecl SDLAudioManager::~SDLAudioManager(void)" (??1SDLAudioManager@@UEAA@XZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_FreeMusic sin resolver al que se hace referencia en la función "public: virtual __cdecl SDLAudioManager::~SDLAudioManager(void)" (??1SDLAudioManager@@UEAA@XZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_PlayChannelTimed sin resolver al que se hace referencia en la función "public: virtual int __cdecl SDLAudioManager::playChannel(int,int,int)" (?playChannel@SDLAudioManager@@UEAAHHHH@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_PlayMusic sin resolver al que se hace referencia en la función "public: virtual void __cdecl SDLAudioManager::playMusic(int,int)" (?playMusic@SDLAudioManager@@UEAAXHH@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_Volume sin resolver al que se hace referencia en la función "public: virtual int __cdecl SDLAudioManager::setChannelVolume(int,int)" (?setChannelVolume@SDLAudioManager@@UEAAHHH@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_VolumeMusic sin resolver al que se hace referencia en la función "public: virtual int __cdecl SDLAudioManager::setMusicVolume(int)" (?setMusicVolume@SDLAudioManager@@UEAAHH@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_HaltChannel sin resolver al que se hace referencia en la función "public: virtual void __cdecl SDLAudioManager::haltChannel(int)" (?haltChannel@SDLAudioManager@@UEAAXH@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_HaltMusic sin resolver al que se hace referencia en la función "public: virtual void __cdecl SDLAudioManager::haltMusic(void)" (?haltMusic@SDLAudioManager@@UEAAXXZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_Pause sin resolver al que se hace referencia en la función "public: virtual void __cdecl SDLAudioManager::pauseChannel(int)" (?pauseChannel@SDLAudioManager@@UEAAXH@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_Resume sin resolver al que se hace referencia en la función "public: virtual void __cdecl SDLAudioManager::resumeChannel(int)" (?resumeChannel@SDLAudioManager@@UEAAXH@Z)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_PauseMusic sin resolver al que se hace referencia en la función "public: virtual void __cdecl SDLAudioManager::pauseMusic(void)" (?pauseMusic@SDLAudioManager@@UEAAXXZ)
+SDLAudioManager.obj : error LNK2019: símbolo externo Mix_ResumeMusic sin resolver al que se hace referencia en la función "public: virtual void __cdecl SDLAudioManager::resumeMusic(void)" (?resumeMusic@SDLAudioManager@@UEAAXXZ)
+SDLFontsManager.obj : error LNK2019: símbolo externo TTF_Init sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLFontsManager::init(void)" (?init@SDLFontsManager@@UEAA_NXZ)
+SDLFontsManager.obj : error LNK2019: símbolo externo TTF_Quit sin resolver al que se hace referencia en la función "public: virtual __cdecl SDLFontsManager::~SDLFontsManager(void)" (??1SDLFontsManager@@UEAA@XZ)
+SDLGame.obj : error LNK2019: símbolo externo SDL_CreateWindow sin resolver al que se hace referencia en la función "private: void __cdecl SDLGame::initSDL(void)" (?initSDL@SDLGame@@AEAAXXZ)
+SDLGame.obj : error LNK2019: símbolo externo SDL_DestroyWindow sin resolver al que se hace referencia en la función "private: void __cdecl SDLGame::closeSDL(void)" (?closeSDL@SDLGame@@AEAAXXZ)
+SDLGame.obj : error LNK2019: símbolo externo SDL_ShowCursor sin resolver al que se hace referencia en la función "private: void __cdecl SDLGame::initSDL(void)" (?initSDL@SDLGame@@AEAAXXZ)
+SDLGame.obj : error LNK2019: símbolo externo SDL_CreateRenderer sin resolver al que se hace referencia en la función "private: void __cdecl SDLGame::initSDL(void)" (?initSDL@SDLGame@@AEAAXXZ)
+SDLGame.obj : error LNK2019: símbolo externo SDL_DestroyRenderer sin resolver al que se hace referencia en la función "private: void __cdecl SDLGame::closeSDL(void)" (?closeSDL@SDLGame@@AEAAXXZ)
+SDLGame.obj : error LNK2019: símbolo externo SDL_Init sin resolver al que se hace referencia en la función "private: void __cdecl SDLGame::initSDL(void)" (?initSDL@SDLGame@@AEAAXXZ)
+SDLGame.obj : error LNK2019: símbolo externo SDL_Quit sin resolver al que se hace referencia en la función "private: void __cdecl SDLGame::closeSDL(void)" (?closeSDL@SDLGame@@AEAAXXZ)
+SDLTexturesManager.obj : error LNK2019: símbolo externo IMG_Init sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLTexturesManager::init(void)" (?init@SDLTexturesManager@@UEAA_NXZ)
+SDLTexturesManager.obj : error LNK2019: símbolo externo IMG_Quit sin resolver al que se hace referencia en la función "public: virtual __cdecl SDLTexturesManager::~SDLTexturesManager(void)" (??1SDLTexturesManager@@UEAA@XZ)
+Texture.obj : error LNK2019: símbolo externo SDL_FreeSurface sin resolver al que se hace referencia en la función "public: bool __cdecl Texture::loadFromImg(struct SDL_Renderer *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadFromImg@Texture@@QEAA_NPEAUSDL_Renderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Texture.obj : error LNK2019: símbolo externo SDL_CreateTextureFromSurface sin resolver al que se hace referencia en la función "public: bool __cdecl Texture::loadFromImg(struct SDL_Renderer *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadFromImg@Texture@@QEAA_NPEAUSDL_Renderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Texture.obj : error LNK2019: símbolo externo SDL_RenderCopy sin resolver al que se hace referencia en la función "public: void __cdecl Texture::render(struct SDL_Rect const &,struct SDL_Rect const &)const " (?render@Texture@@QEBAXAEBUSDL_Rect@@0@Z)
+Texture.obj : error LNK2019: símbolo externo SDL_RenderCopyEx sin resolver al que se hace referencia en la función "public: void __cdecl Texture::render(struct SDL_Rect const &,double,struct SDL_Rect const &)const " (?render@Texture@@QEBAXAEBUSDL_Rect@@N0@Z)
+Texture.obj : error LNK2019: símbolo externo SDL_DestroyTexture sin resolver al que se hace referencia en la función "public: void __cdecl Texture::close(void)" (?close@Texture@@QEAAXXZ)
+Texture.obj : error LNK2019: símbolo externo IMG_Load sin resolver al que se hace referencia en la función "public: bool __cdecl Texture::loadFromImg(struct SDL_Renderer *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadFromImg@Texture@@QEAA_NPEAUSDL_Renderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+MSVCRTD.lib(exe_main.obj) : error LNK2019: símbolo externo main sin resolver al que se hace referencia en la función "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\SDL2-2.0.7\lib\x86\SDL2.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\SDL2-2.0.7\lib\x86\SDL2main.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\SDL2_image-2.0.1\lib\x86\SDL2_image.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\SDL2_ttf-2.0.14\lib\x86\SDL2_ttf.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\SDL2_mixer-2.0.2\lib\x86\SDL2_mixer.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\SDL2_net-2.0.1\lib\x86\SDL2_net.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroids1.0\SDLProject\bin\TPV2Debug.exe : fatal error LNK1120: 51 externos sin resolver
