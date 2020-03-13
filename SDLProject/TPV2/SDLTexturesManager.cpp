@@ -14,9 +14,11 @@ SDLTexturesManager::~SDLTexturesManager() {
 	// free all textures
 	for (const auto &pair : textures_) {
 		if (pair.second != nullptr)
-			delete pair.second;//TODO
+			delete pair.second;
 	}
+
 	IMG_Quit();
+
 }
 
 bool SDLTexturesManager::init() {
@@ -27,6 +29,7 @@ bool SDLTexturesManager::init() {
 	int imgInit_ret = IMG_Init(
 			IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
 	assert(imgInit_ret != 0);
+
 	initialized_ = true;
 
 	return true;

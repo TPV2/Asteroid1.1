@@ -19,15 +19,11 @@ public:
 		SpaceShips,
 		Airplanes,
 		Star,
-		//Implementación
-		Heart,
-		Bullet,
-		Asteroid,
-		
+		PacMan,
+
 		// text
 		HelloWorld,
 		PressAnyKey,
-		Win,
 		GameOver,
 	};
 
@@ -36,12 +32,8 @@ public:
 		Beat,
 		Cheer,
 		Boooo,
-		March,
-		
 
 		// sound effects
-		Explosion,
-		Shoot,
 		Wall_Hit,
 		Paddle_Hit
 	};

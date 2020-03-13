@@ -6,6 +6,9 @@
 
 using namespace std;
 
+/*
+ *
+ */
 class TexturesManager {
 public:
 	TexturesManager();

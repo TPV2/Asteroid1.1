@@ -2,58 +2,101 @@
 
 #include <iostream>
 #include <array>
-#include "Component.h"
-#include "Manager.h"
-#include "SDLGame.h"
+#include <bitset>
+#include <functional>
 
-class EntityManager;
+#include "Component.h"
+#include "DefFactory.h"
+#include "SDLGame.h"
+#include "ecs.h"
+
+// We don't include the EntityManager class to avoid circular dependeincies
+class Manager;
 
 class Entity {
-public:
-	Entity(SDLGame *game, EntityManager* mngr);
-	virtual ~Entity();
 
-	EntityManager* getEntityMangr() {
+	// defining a type just for brevity
+	using uptr_cmp = std::unique_ptr<Component,std::function<void(Component*)>>;
+
+public:
+	Entity() :
+			game_(SDLGame::instance()), //
+			mngr_(nullptr), //
+			active_(true) {
+	}
+
+	virtual ~Entity() {
+	}
+
+	inline Manager* getEntityMngr() const {
 		return mngr_;
 	}
 
-	template<typename T, typename ... TArgs>
-	T* addComponent(TArgs&& ...mArgs) {
-		T *c(new T(std::forward<TArgs>(mArgs)...));
-		std::unique_ptr<Component> uPtr(c);
-		components_.push_back(std::move(uPtr));
-		componentsArray_[c->getId()] = c;
-		c->setEntity(this);
-		c->setGame(game_);
-		c->init();
+	inline void setEntityMngr(Manager *mngr) {
+		mngr_ = mngr;
+	}
+
+	inline bool isActive() const {
+		return active_;
+	}
+
+	inline void setActive(bool active) {
+		active_ = active;
+	}
+
+	template<typename T>
+	inline T* getComponent(ecs::CmpIdType id) {
+		return static_cast<T*>(cmpArray_[id].get());
+	}
+
+	template<typename T>
+	inline bool hasComponent(ecs::CmpIdType id) {
+		return cmpArray_[id] != nullptr;
+	}
+
+	template<typename T, typename FT = DefFactory<T>, typename ... Targs>
+	inline T* addComponent(Targs &&...args) {
+
+		// create the actual component ...
+		T *c = FT::construct(std::forward<Targs>(args)...);
+		uptr_cmp uPtr(c, [](Component *p) {
+			FT::destroy(static_cast<T*>(p));
+		});
+
+		// store it in the components array
+		cmpArray_[c->id_] = std::move(uPtr);
+
 		return c;
 	}
 
 	template<typename T>
-	T* getComponent(ecs::CmpIdType id) {
-		return static_cast<T*>(componentsArray_[id]);
+	inline void removeComponent(ecs::CmpIdType id) {
+		 cmpArray_[id] = nullptr;
 	}
 
-	bool hasComponent(ecs::CmpIdType id) {
-		return componentsArray_[id] != nullptr;
+	// defined in CPP since it access the manager
+	void addToGroup(ecs::GrpIdType id);
+
+	inline void removeFromGroup(ecs::GrpIdType grpId) {
+		groups_[grpId] = false;
 	}
 
-	void update() {
-		for (auto &c : components_) {
-			c->update();
-		}
+	inline void resetGroups() {
+		groups_.reset();
 	}
 
-	void draw() {
-		for (auto &c : components_) {
-			c->draw();
-		}
+	inline bool hasGroup(ecs::GrpIdType grpId) {
+		return groups_[grpId];
 	}
+
 private:
 	SDLGame *game_;
-	EntityManager* mngr_;
+	Manager *mngr_;
 
-	std::vector<unique_ptr<Component>> components_;
-	std::array<Component*,ecs::maxComponents> componentsArray_ = {};
+	std::array<uptr_cmp, ecs::maxComponents> cmpArray_ = { };
+	std::bitset<ecs::maxGroups> groups_;
+
+
+	bool active_;
 };
 

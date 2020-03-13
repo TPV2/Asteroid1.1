@@ -4,41 +4,56 @@
 namespace ecs {
 
 using CmpIdType = std::size_t;
+using GrpIdType = std::size_t;
+using HdlrIdType = std::size_t;
+using SysIdType = std::size_t;
 
 enum CmpId : CmpIdType {
 	Transform = 0,
-	SimpleMoveBehavior,
-	BallMoveBehaviour,
-	PaddleMoveBehaviour,
-	StopOnBorders,
-	Rectangle,
-	ScoreManager,
-	ScoreViewer,
-	PaddleKBCtrl,
-	PaddleMouseCtrl,
-	GameCtrl,
-	GameLogic,
-#pragma region implementación
-	FighterViewer,
-	FighterCtrl,
-	FighterMotion,
-	Health,
-	BulletsPool,
-	BulletsMotion,
-	BulletsViewer,
-	Gun,
-	AsteroidsPool,
-	AsteroidsMotion,
-	AsteroidsViewer,
-#pragma endregion
-
+	ImageComponent,
+	LifeTime,
+	Rotation,
+	Score,
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of components
 	_LastCmptId_
 };
 
+enum GrpId : GrpIdType {
+	_grp_Star,
+	//
+	// don't touch the rest of this enum, it is to identify the max
+	// number of groups
+	_LastGrpId_
+};
+
+enum HdlrId : HdlrIdType {
+	_hdlr_PacMan,
+	_hdlr_GameState,
+	//
+	// don't touch the rest of this enum, it is to identify the max
+	// number of handlers
+	_LastHdlrId_
+};
+
+enum SysId : SysIdType {
+	_sys_GameCtrl,
+	_sys_PackMan,
+	_sys_Stars,
+	_sys_Render,
+	_sys_Collisions,
+	//
+	// don't touch the rest of this enum, it is to identify the max
+	// number of systems
+	_LastSysId_
+};
+
+
 constexpr std::size_t maxComponents = _LastCmptId_;
+constexpr std::size_t maxGroups = _LastGrpId_;
+constexpr std::size_t maxHandlers = _LastHdlrId_;
+constexpr std::size_t maxSystems = _LastSysId_;
 
 // these two should be used to get a component via the field
 // entity_

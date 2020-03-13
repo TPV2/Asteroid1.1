@@ -1,11 +1,12 @@
 #include <iostream>
 
-#include "Asteroids.h"
+#include "PacMan.h"
 
 using namespace std;
 
+
 void start() {
-	Asteroids g;
+	PacMan g;
 	g.start();
 }
 

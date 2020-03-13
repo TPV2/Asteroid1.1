@@ -1,28 +1,37 @@
 #include "Manager.h"
-#include "Entity.h"
 
-EntityManager::EntityManager(SDLGame *game) :
-		game_(game) {
-}
+#include <algorithm>
 
-EntityManager::~EntityManager() {
-}
+void Manager::refresh() {
 
-void EntityManager::update() {
-	for (auto &e : entities) {
-		e->update();
+	// execute all events
+	while (!events_.empty()) {
+		auto &event = events_.front();
+		event();
+		events_.pop_front();
 	}
-}
 
-void EntityManager::draw() {
-	for (auto &e : entities) {
-		e->draw();
+	// update groups
+	for (auto i(0u); i < ecs::maxGroups; i++) {
+		auto &grp = entsGroups_[i];
+		grp.erase( //
+				std::remove_if( //
+						grp.begin(),  //
+						grp.end(), //
+						[i](Entity *e) { //
+							return !e->isActive() || !e->hasGroup(i);
+						}), //
+				grp.end());
 	}
+
+	// update the list of enteties
+	ents_.erase( //
+			std::remove_if( //
+					ents_.begin(),  //
+					ents_.end(), //
+					[](const uptr_ent &e) { //
+						return !e->isActive();
+					}), //
+			ents_.end());
 }
 
-Entity* EntityManager::addEntity() {
-	Entity* e = new Entity(game_,this);
-	std::unique_ptr<Entity> uPtr( e );
-	entities.emplace_back(std::move(uPtr));
-	return e;
-}

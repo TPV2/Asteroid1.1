@@ -1,11 +1,7 @@
 #include "Entity.h"
+#include "Manager.h"
 
-Entity::Entity(SDLGame *game, EntityManager *mngr) :
-		game_(game), //
-		mngr_(mngr) //
-{
+void Entity::addToGroup(ecs::GrpIdType id) {
+	groups_[id] = true;
+	mngr_->addToGroup(id,this);
 }
-
-Entity::~Entity() {
-}
-

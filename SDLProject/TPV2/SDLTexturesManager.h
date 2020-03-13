@@ -2,9 +2,10 @@
 
 #include "TexturesManager.h"
 #include <map>
-#include <string>
 
-
+/*
+ *
+ */
 class SDLTexturesManager: public TexturesManager {
 public:
 	SDLTexturesManager();
@@ -17,7 +18,7 @@ public:
 		return textures_[tag];
 	}
 
-	bool loadFromImg(std::size_t tag, SDL_Renderer *renderer,
+	bool loadFromImg(std::size_t, SDL_Renderer *renderer,
 			const string &fileName) override;
 	bool loadFromText(std::size_t, SDL_Renderer *renderer, const string &text,
 			const Font *font, const SDL_Color &color) override;

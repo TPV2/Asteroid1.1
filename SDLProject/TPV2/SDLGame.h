@@ -6,12 +6,12 @@
 #include "AudioManager.h"
 #include "FontsManager.h"
 #include "RandomNumberGenerator.h"
+#include "InputHandler.h"
 
 #include <string>
 #include <memory>
 #include <assert.h>
 
-#include "InputHandler.h"
 using namespace std;
 
 class SDLGame {
