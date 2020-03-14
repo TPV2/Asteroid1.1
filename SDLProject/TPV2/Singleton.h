@@ -34,7 +34,7 @@ public:
 	// can call this init method at the begining of the program.
 	template<typename ...Targs>
 	inline static T* init(Targs &&...args) {
-		assert(instance_.get() == nullptr);
+		//assert(instance_.get() == nullptr);
 		instance_.reset(new T(std::forward<Targs>(args)...));
 		return instance_.get();
 	}

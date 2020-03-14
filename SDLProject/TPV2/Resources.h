@@ -20,6 +20,7 @@ public:
 		Airplanes,
 		Star,
 		PacMan,
+		Asteroid,
 
 		// text
 		HelloWorld,

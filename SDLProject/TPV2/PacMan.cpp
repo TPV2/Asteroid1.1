@@ -10,6 +10,7 @@
 #include "SDL_macros.h"
 #include "StarsSystem.h"
 #include "StarsPool.h"
+#include "AsteroidPool.h"
 
 using namespace std;
 
@@ -28,7 +29,8 @@ void PacMan::initGame() {
 
 	game_ = SDLGame::init("Stars", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
 
-	StarsPool::init(100);
+	//StarsPool::init(5);
+	AsteroidPool::init(1);
 
 	mngr_ = new Manager(game_);
 

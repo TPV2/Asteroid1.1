@@ -22,6 +22,7 @@ enum CmpId : CmpIdType {
 
 enum GrpId : GrpIdType {
 	_grp_Star,
+	_grp_Asteroid,
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of groups
