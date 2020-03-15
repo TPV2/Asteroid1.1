@@ -28,17 +28,19 @@ PacMan::~PacMan() {
 void PacMan::initGame() {
 
 	game_ = SDLGame::init("Stars", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
-
 	//StarsPool::init(5);
-	AsteroidPool::init(1);
+	AsteroidPool::init(10);
 
 	mngr_ = new Manager(game_);
 
 	renderSystem_ = mngr_->addSystem<RenderSystem>();
-	starsSystem_ = mngr_->addSystem<StarsSystem>();
-	pacmanSystem_ = mngr_->addSystem<PacManSystem>();
+	//starsSystem_ = mngr_->addSystem<StarsSystem>();
+	//pacmanSystem_ = mngr_->addSystem<PacManSystem>();
 	collisionSystem_ = mngr_->addSystem<CollisionSystem>();
 	gameCtrlSystem_ = mngr_->addSystem<GameCtrlSystem>();
+	//
+	asteroidsSystem_ = mngr_->addSystem<AsteroidsSystem>();
+	fighterSystem_ = mngr_->addSystem<FighterSystem>();
 }
 
 void PacMan::closeGame() {
@@ -65,12 +67,13 @@ void PacMan::start() {
 		mngr_->refresh();
 
 		gameCtrlSystem_->update();
-		starsSystem_->update();
-		pacmanSystem_->update();
+		//starsSystem_->update();
+		//pacmanSystem_->update();
 		collisionSystem_->update();
 		renderSystem_->update();
-
-
+		//
+		asteroidsSystem_->update();
+		fighterSystem_->update();
 		SDL_RenderPresent(game_->getRenderer());
 
 		Uint32 frameTime = game_->getTime() - startTime;

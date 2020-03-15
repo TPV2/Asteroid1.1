@@ -24,6 +24,7 @@ struct Transform: Component {
 			rotation_() //
 	{
 	}
+	
 
 	Vector2D position_;
 	Vector2D velocity_;

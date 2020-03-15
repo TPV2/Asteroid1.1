@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Asteroides">
+      <UniqueIdentifier>{e358d7c9-6a60-4d1d-bd33-1d1af17333c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Fighter">
+      <UniqueIdentifier>{2c004e23-4b9b-41a0-96f9-267b95a4e991}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -118,6 +124,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AsteroidPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AsteroidsSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FigtherSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -246,7 +258,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AsteroidPool.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Asteroides</Filter>
+    </ClInclude>
+    <ClInclude Include="AsteroidsSystem.h">
+      <Filter>Header Files\Asteroides</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterSystem.h">
+      <Filter>Header Files\Fighter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

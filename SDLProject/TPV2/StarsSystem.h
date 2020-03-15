@@ -37,9 +37,9 @@ public:
 			int r = game_->getRandGen()->nextInt(1, 2);
 			Uint32 lt = game_->getRandGen()->nextInt(5, 10);
 
-			Entity *e = mngr_->addEntity<AsteroidPool>(x, y, w, h, r, lt);
-			if (e != nullptr)
-				e->addToGroup(ecs::_grp_Star);
+			//Entity *e = mngr_->addEntity<AsteroidPool>(x, y, w, h, r, lt);
+			/*if (e != nullptr)
+				e->addToGroup(ecs::_grp_Star);*/
 		}
 	}
 
@@ -68,9 +68,9 @@ public:
 					int r = game_->getRandGen()->nextInt(1, 2);
 					Uint32 lt = game_->getRandGen()->nextInt(5, 10);
 
-					Entity *e = mngr_->addEntity<StarsPool>(x, y, w, h, r, lt);
-					if (e != nullptr)
-						e->addToGroup(ecs::_grp_Star);
+					//Entity *e = mngr_->addEntity<StarsPool>(x, y, w, h, r, lt);
+					/*if (e != nullptr)
+						e->addToGroup(ecs::_grp_Star);*/
 				}
 
 			}

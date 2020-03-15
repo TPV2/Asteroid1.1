@@ -1,6 +1,14 @@
-﻿G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj(155,5): warning MSB4011: "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDLProject.props" no se puede volver a importar. Ya se importó en "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj (154,5)". Lo más probable es que se trate de un error al crear la compilación. Se omitirá esta importación. 
+﻿G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj(157,5): warning MSB4011: "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDLProject.props" no se puede volver a importar. Ya se importó en "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj (156,5)". Lo más probable es que se trate de un error al crear la compilación. Se omitirá esta importación. 
+  AsteroidPool.cpp
   CollisionSystem.cpp
+  Entity.cpp
   GameCtrlSystem.cpp
+  main.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(50,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  Manager.cpp
+  ObjectPool.cpp
+  OFFacotry.cpp
   PacMan.cpp
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(50,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
@@ -8,16 +16,14 @@ G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(50,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   RenderSystem.cpp
+  Resources.cpp
+  SDLGame.cpp
+  Singleton.cpp
   StarsPool.cpp
   StarsSystem.cpp
   System.cpp
-  main.cpp
-G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
-G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(50,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  Transform.cpp
   Generando código...
-Entity.obj : error LNK2005: ya se definió "public: virtual __cdecl Entity::~Entity(void)" (??1Entity@@UEAA@XZ) en CollisionSystem.obj
-Transform.obj : error LNK2005: ya se definió "public: __cdecl Transform::Transform(class Vector2D,class Vector2D,double,double,double)" (??0Transform@@QEAA@VVector2D@@0NNN@Z) en PacMan.obj
-Transform.obj : error LNK2005: ya se definió "public: __cdecl Transform::Transform(void)" (??0Transform@@QEAA@XZ) en PacMan.obj
      Creando biblioteca G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\bin\TPV2Debug.lib y objeto G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\bin\TPV2Debug.exp
 Font.obj : error LNK2019: símbolo externo TTF_OpenFont sin resolver al que se hace referencia en la función "public: bool __cdecl Font::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,int)" (?load@Font@@QEAA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z)
 Font.obj : error LNK2019: símbolo externo TTF_RenderText_Solid sin resolver al que se hace referencia en la función "public: struct SDL_Surface * __cdecl Font::renderText(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,struct SDL_Color)const " (?renderText@Font@@QEBAPEAUSDL_Surface@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@USDL_Color@@@Z)
@@ -33,8 +39,6 @@ PacMan.obj : error LNK2019: símbolo externo SDL_RenderPresent sin resolver al q
 SDLGame.obj : error LNK2001: símbolo externo SDL_RenderPresent sin resolver
 PacMan.obj : error LNK2019: símbolo externo SDL_GetTicks sin resolver al que se hace referencia en la función "public: unsigned int __cdecl SDLGame::getTime(void)" (?getTime@SDLGame@@QEAAIXZ)
 PacMan.obj : error LNK2019: símbolo externo SDL_Delay sin resolver al que se hace referencia en la función "public: void __cdecl PacMan::start(void)" (?start@PacMan@@QEAAXXZ)
-PacMan.obj : error LNK2019: símbolo externo "public: void __cdecl Entity::addToGroup(unsigned __int64)" (?addToGroup@Entity@@QEAAX_K@Z) sin resolver al que se hace referencia en la función "public: void __cdecl StarsSystem::addStars(unsigned __int64)" (?addStars@StarsSystem@@QEAAX_K@Z)
-PacMan.obj : error LNK2019: símbolo externo "public: void __cdecl Manager::refresh(void)" (?refresh@Manager@@QEAAXXZ) sin resolver al que se hace referencia en la función "public: void __cdecl PacMan::start(void)" (?start@PacMan@@QEAAXXZ)
 SDLAudioManager.obj : error LNK2019: símbolo externo SDL_RWFromFile sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::loadSound(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadSound@SDLAudioManager@@UEAA_NHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
 SDLAudioManager.obj : error LNK2019: símbolo externo Mix_Init sin resolver al que se hace referencia en la función "public: virtual bool __cdecl SDLAudioManager::init(void)" (?init@SDLAudioManager@@UEAA_NXZ)
 SDLAudioManager.obj : error LNK2019: símbolo externo Mix_Quit sin resolver al que se hace referencia en la función "public: virtual __cdecl SDLAudioManager::~SDLAudioManager(void)" (??1SDLAudioManager@@UEAA@XZ)
@@ -71,8 +75,6 @@ Texture.obj : error LNK2019: símbolo externo SDL_RenderCopy sin resolver al que
 Texture.obj : error LNK2019: símbolo externo SDL_RenderCopyEx sin resolver al que se hace referencia en la función "public: void __cdecl Texture::render(struct SDL_Rect const &,double,struct SDL_Rect const &)const " (?render@Texture@@QEBAXAEBUSDL_Rect@@N0@Z)
 Texture.obj : error LNK2019: símbolo externo SDL_DestroyTexture sin resolver al que se hace referencia en la función "public: void __cdecl Texture::close(void)" (?close@Texture@@QEAAXXZ)
 Texture.obj : error LNK2019: símbolo externo IMG_Load sin resolver al que se hace referencia en la función "public: bool __cdecl Texture::loadFromImg(struct SDL_Renderer *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadFromImg@Texture@@QEAA_NPEAUSDL_Renderer@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-Transform.obj : error LNK2019: símbolo externo "public: __cdecl Component::Component(enum ecs::CmpId)" (??0Component@@QEAA@W4CmpId@ecs@@@Z) sin resolver al que se hace referencia en la función "public: __cdecl Transform::Transform(class Vector2D,class Vector2D,double,double,double)" (??0Transform@@QEAA@VVector2D@@0NNN@Z)
-Transform.obj : error LNK2019: símbolo externo "public: virtual __cdecl Component::~Component(void)" (??1Component@@UEAA@XZ) sin resolver al que se hace referencia en la función "int `public: __cdecl Transform::Transform(class Vector2D,class Vector2D,double,double,double)'::`1'::dtor$2" (?dtor$2@?0???0Transform@@QEAA@VVector2D@@0NNN@Z@4HA)
 MSVCRTD.lib(exe_main.obj) : error LNK2019: símbolo externo main sin resolver al que se hace referencia en la función "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDL2-2.0.7\lib\x86\SDL2.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDL2-2.0.7\lib\x86\SDL2main.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
@@ -80,4 +82,4 @@ G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDL2_image-2.0.1\li
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDL2_ttf-2.0.14\lib\x86\SDL2_ttf.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDL2_mixer-2.0.2\lib\x86\SDL2_mixer.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDL2_net-2.0.1\lib\x86\SDL2_net.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
-G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\bin\TPV2Debug.exe : fatal error LNK1120: 52 externos sin resolver
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\bin\TPV2Debug.exe : fatal error LNK1120: 48 externos sin resolver
