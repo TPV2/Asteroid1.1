@@ -30,6 +30,7 @@ void PacMan::initGame() {
 	game_ = SDLGame::init("Stars", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
 	//StarsPool::init(5);
 	AsteroidPool::init(10);
+	BulletPool::init(30);
 
 	mngr_ = new Manager(game_);
 
@@ -41,6 +42,8 @@ void PacMan::initGame() {
 	//
 	asteroidsSystem_ = mngr_->addSystem<AsteroidsSystem>();
 	fighterSystem_ = mngr_->addSystem<FighterSystem>();
+	bulletSystem_ = mngr_->addSystem<BulletSystem>();
+	fighterGunSystem_ = mngr_->addSystem<FighterGun>();
 }
 
 void PacMan::closeGame() {
@@ -74,6 +77,9 @@ void PacMan::start() {
 		//
 		asteroidsSystem_->update();
 		fighterSystem_->update();
+		bulletSystem_->update();
+		fighterGunSystem_->update();
+
 		SDL_RenderPresent(game_->getRenderer());
 
 		Uint32 frameTime = game_->getTime() - startTime;

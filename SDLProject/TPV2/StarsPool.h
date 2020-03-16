@@ -9,6 +9,7 @@
 #include "Transform.h"
 
 
+
 class StarsPool: public Singleton<StarsPool> {
 	friend Singleton<StarsPool> ;
 public:

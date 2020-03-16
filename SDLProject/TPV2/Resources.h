@@ -22,7 +22,7 @@ public:
 		PacMan,
 		Asteroid,
 		Fighter,
-
+		Bullet,
 		// text
 		HelloWorld,
 		PressAnyKey,

@@ -19,6 +19,9 @@
     <Filter Include="Header Files\Fighter">
       <UniqueIdentifier>{2c004e23-4b9b-41a0-96f9-267b95a4e991}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Bullet">
+      <UniqueIdentifier>{cbbcd386-bd69-44c0-b4df-92377cae4b7e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -130,6 +133,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FigtherSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AsteroidLifeTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FighterGun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -264,6 +282,21 @@
       <Filter>Header Files\Asteroides</Filter>
     </ClInclude>
     <ClInclude Include="FighterSystem.h">
+      <Filter>Header Files\Fighter</Filter>
+    </ClInclude>
+    <ClInclude Include="AsteroidLifeTime.h">
+      <Filter>Header Files\Asteroides</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Header Files\Fighter</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletSystem.h">
+      <Filter>Header Files\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletPool.h">
+      <Filter>Header Files\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterGun.h">
       <Filter>Header Files\Fighter</Filter>
     </ClInclude>
   </ItemGroup>

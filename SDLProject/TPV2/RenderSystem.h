@@ -57,6 +57,11 @@ public:
 		for (auto& e : mngr_->getGroupEntities(ecs::_grp_Asteroid)) {
 			draw(e);
 		}
+
+		//Draw bullets
+		for (auto& e : mngr_->getGroupEntities(ecs::_grp_Bullet)) {
+			draw(e);
+		}
 		
 		//Draw fighter
 		SDL_Rect clipRect =

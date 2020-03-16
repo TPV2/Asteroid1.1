@@ -1,24 +1,49 @@
-﻿G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj(157,5): warning MSB4011: "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDLProject.props" no se puede volver a importar. Ya se importó en "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj (156,5)". Lo más probable es que se trate de un error al crear la compilación. Se omitirá esta importación. 
+﻿G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj(161,5): warning MSB4011: "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\SDLProject.props" no se puede volver a importar. Ya se importó en "G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\TPV2.vcxproj (160,5)". Lo más probable es que se trate de un error al crear la compilación. Se omitirá esta importación. 
   AsteroidPool.cpp
+  AsteroidsSystem.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,67): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,61): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,49): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,43): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
   CollisionSystem.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,67): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,61): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,49): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,43): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
   Entity.cpp
+  FigtherSystem.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\FighterSystem.h(52,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\FighterSystem.h(53,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   GameCtrlSystem.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,67): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,61): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,49): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,43): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
   main.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,67): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,61): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,49): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,43): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(50,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\FighterSystem.h(52,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\FighterSystem.h(53,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   Manager.cpp
-  ObjectPool.cpp
-  OFFacotry.cpp
   PacMan.cpp
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,67): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(34,61): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,49): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\AsteroidsSystem.h(35,43): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(50,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\FighterSystem.h(52,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\FighterSystem.h(53,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   PacManSystem.cpp
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(49,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
 G:\2do\2doCuatrimestre\TPV2\practicas\Asteroid1.1\SDLProject\TPV2\PacManSystem.h(50,9): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
   RenderSystem.cpp
   Resources.cpp
   SDLGame.cpp
-  Singleton.cpp
   StarsPool.cpp
   StarsSystem.cpp
   System.cpp

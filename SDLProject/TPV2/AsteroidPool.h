@@ -2,11 +2,13 @@
 #include "Singleton.h"
 #include "Entity.h"
 #include "ObjectPool.h"
-#include "Transform.h"
-#include "LifeTime.h"
+
+//Componentes para los asteroides
+#include "AsteroidLifeTime.h"
 #include "Rotation.h"
 #include "ImageComponent.h"
-//Componentes para los asteroides
+#include "Transform.h"
+#include <SDL_stdinc.h> // for Uint32
 
 
 class AsteroidPool : public Singleton<AsteroidPool>
@@ -22,9 +24,10 @@ public:
 	}
 
 	//Constructor de asteroides
-	inline Entity* construct_(Vector2D pos, Vector2D scale, Vector2D speed, int rotation) {
+	inline Entity* construct_(Vector2D pos, Vector2D scale, Vector2D speed, int rotation, int level, Uint32 lifeTime) {
 		Entity* currAsteroid = pool_.getObj();
 		if (currAsteroid != nullptr) {
+			#pragma region Transform
 			currAsteroid->setActive(true);
 			Transform* tr = currAsteroid->getComponent<Transform>(ecs::Transform);
 			tr->position_.set(pos);
@@ -33,6 +36,11 @@ public:
 			tr->height_ = scale.getY();
 			tr->velocity_.set(speed);
 			currAsteroid->getComponent<Rotation>(ecs::Rotation)->rotation_ = rotation;
+			#pragma endregion
+			AsteroidLifeTime* alt = currAsteroid->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
+			alt->level_ = level;
+			alt->lifeTime_ = lifeTime * 1000;
+			alt->creatiomTime_ = SDLGame::instance()->getTime();
 		}
 		return currAsteroid;
 	}
@@ -47,6 +55,9 @@ public:
 	inline static Entity* construct(Targs&&...args) {
 		return AsteroidPool::instance()->construct_(std::forward<Targs>(args)...);
 	}
+
+	//Devuelve el primer elemento libre dentro del pool
+	Entity* getFistFreeEntity() { return pool_.getObj(); };
 private:
 	//Pool de asteroides
 	ObjectPool<Entity> pool_;
@@ -59,6 +70,7 @@ private:
 		for (Entity* e : pool_.getPool()) {
 			e->addComponent<Transform>();
 			e->addComponent<Rotation>();
+			e->addComponent<AsteroidLifeTime>();
 			e->addComponent<ImageComponent>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Asteroid));
 		}
 	}

@@ -7,8 +7,8 @@ vector<Resources::FontInfo> Resources::fonts_ {
 		{ ARIAL24, "resources/fonts/ARIAL.ttf", 24 } //
 };
 
-vector<Resources::ImageInfo> Resources::images_ {
-//
+vector<Resources::ImageInfo> Resources::images_{
+	//
 		{ Blank, "resources/images/blank.png" }, //
 		{ TennisBall, "resources/images/tennis_ball.png" }, //
 		{ KeyBoardIcon, "resources/images/keyboard.png" }, //
@@ -19,7 +19,9 @@ vector<Resources::ImageInfo> Resources::images_ {
 		{ Star, "resources/images/star.png" }, //
 		{ PacMan, "resources/images/pacman.png" }, //
 		{ Asteroid,"resources/images/asteroid.png" },
-		{ Fighter, "resources/images/airplanes.png"}
+		{ Fighter, "resources/images/airplanes.png"},
+		{ Bullet, "resources/images/misile.png"}
+
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

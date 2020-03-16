@@ -11,9 +11,13 @@ using SysIdType = std::size_t;
 enum CmpId : CmpIdType {
 	Transform = 0,
 	ImageComponent,
-	LifeTime,
+	LifeTime,//borrar luego
 	Rotation,
 	Score,
+	AsteroidLifeTime,
+	AsteroidPool,
+	GameState,
+	Health,
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of components
@@ -23,6 +27,7 @@ enum CmpId : CmpIdType {
 enum GrpId : GrpIdType {
 	_grp_Star,
 	_grp_Asteroid,
+	_grp_Bullet,
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of groups
@@ -47,6 +52,8 @@ enum SysId : SysIdType {
 	_sys_Collisions,
 	_sys_Asteroids,
 	_sys_Fighter,
+	_sys_Bullets,
+	_sys_FighterGun,
 	//
 	// don't touch the rest of this enum, it is to identify the max
 	// number of systems

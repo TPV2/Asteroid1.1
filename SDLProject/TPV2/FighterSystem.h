@@ -4,6 +4,7 @@
 #include "Transform.h"
 #include "Manager.h"
 #include "ImageComponent.h"
+#include "BulletSystem.h"
 
 class FighterSystem :
 	public System
@@ -23,6 +24,14 @@ public:
 		fighter_->addComponent<ImageComponent>(
 			game_->getTextureMngr()->getTexture(Resources::Fighter));
 		mngr_->setHandler(ecs::_hdlr_Fighter, fighter_);
+	}
+
+	// - poner el caza en el centro con velocidad 0 y rotación 0. No hace falta
+	// desactivar la entidad (no dibujarla si el juego está parado en RenderSystem).
+	void onCollisionWithAsteroid() {
+		tr_->position_.set({ (double)game_->getWindowWidth() / 2, (double)game_->getWindowHeight() / 2 });
+		tr_->velocity_.set({ 0,0 });
+		//fighter_->setActive(false);
 	}
 
 	void update() override {
@@ -46,12 +55,14 @@ public:
 				tr_->velocity_ = nv
 					* std::max(0.0, (tr_->velocity_.magnitude() - 0.5));
 			}
-		}
 
+		}
+		//Aceleración del fighter
 		tr_->position_ = tr_->position_ + tr_->velocity_;
 		int x = tr_->position_.getX();
 		int y = tr_->position_.getY();
 
+		//Para el rebote con los bordes del juego
 		if (x <= 0 || x + tr_->width_ >= game_->getWindowWidth() || y <= 0
 			|| y + tr_->height_ >= game_->getWindowHeight()) {
 			tr_->rotation_ = fmod(tr_->rotation_ + 180.0, 360.0);
@@ -59,6 +70,7 @@ public:
 		}
 
 	}
+	const Transform* getTranform() { return tr_; };
 private:
 	Entity* fighter_;
 	Transform* tr_;
