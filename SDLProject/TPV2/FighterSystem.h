@@ -33,7 +33,6 @@ public:
 	void onCollisionWithAsteroid() {
 		tr_->position_.set({ (double)game_->getWindowWidth() / 2, (double)game_->getWindowHeight() / 2 });
 		tr_->velocity_.set({ 0,0 });
-		//fighter_->setActive(false);
 	}
 
 	void update() override {

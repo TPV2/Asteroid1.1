@@ -18,8 +18,8 @@ public:
 		}
 	}
 	// - desactivar la bala “b”
-	void onCollisionWithAsteroid(Entity* b, Entity* a) {
-
+	void onCollisionWithAsteroid(Entity* b) {
+		b->setActive(false);
 	}
 	// - si el juego está parado no hacer nada.
 	// - mover las balas y desactivar las que se salen de la ventana

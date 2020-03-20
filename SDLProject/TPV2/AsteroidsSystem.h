@@ -6,6 +6,9 @@
 #include "AsteroidPool.h"
 #include <SDL_stdinc.h> // for Uint32
 
+//NO va aquí
+#include <random>
+
 
 class AsteroidsSystem :
 	public System
@@ -18,6 +21,7 @@ public:
 	void onCollision(Entity* e) {
 
 		Transform* tr = e->getComponent<Transform>(ecs::Transform);
+		//¿BORRAR?
 		/*AsteroidLifeTime* alt = e->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
 		alt->level_ -= 1;
 		Entity* ast1 = AsteroidPool::instance()->getFistFreeEntity();
@@ -44,6 +48,50 @@ public:
 		tr->rotation_ = 0;
 		tr->height_ = 0;
 		tr->width_ = 0;
+	}
+
+	// - dividir el metoríto a
+	void onCollisionWithBullet(Entity* a) {
+		//auto alt = a->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
+		//Transform* atr = a->getComponent<Transform>(ecs::Transform);
+		//cout << "IMPACTADO METEORITO NIVEL: " << alt->level_;
+		//alt->level_ -= 1;
+		//if (alt->level_ >= 1) {
+		//	//Primer asteroide
+		//	Entity* ast1 = AsteroidPool::instance()->getFistFreeEntity();
+		//	Transform* ast1tr = ast1->getComponent<Transform>(ecs::Transform);
+		//	ast1tr->position_.set(atr->position_);
+		//	ast1tr->velocity_.set({ 1,1 });
+		//	ast1->setActive(true);
+		//	//Segundo asteroide
+		//	Entity* ast2 = AsteroidPool::instance()->getFistFreeEntity();
+		//	Transform* ast2tr = ast2->getComponent<Transform>(ecs::Transform);
+		//	ast2tr->position_.set(atr->position_);
+		//	ast2tr->velocity_.set({ 1,0 });
+		//	ast1->setActive(true);
+		//}
+		a->setActive(false);
+
+		//CODIGO DE LA PRÁCTICA 1
+		//a->setLevel(a->getLevel() - 1);
+		//if (a->getLevel() >= 1) {
+		//	SRandBasedGenerator* rnd = new SRandBasedGenerator();
+		//	//Primer asteroide
+		//	Asteroid* ast1 = astPool.getObj();
+		//	Vector2D dir1 = { (double)rnd->nextInt(-100, 101) / 100.0, (double)rnd->nextInt(-100, 101) / 100.0 };
+		//	double vel1 = rnd->nextInt(ASTEROID_MIN_VEL * 100, ASTEROID_MAX_VEL * 100) / 100.0;
+		//	double angle1 = rnd->nextInt(0, 360);
+		//	ast1->startAsteroid(*a->getPos(), dir1, vel1, angle1, a->getLevel());
+		//	//Segundo asteroide
+		//	Asteroid* ast2 = astPool.getObj();
+		//	Vector2D dir2 = { (double)rnd->nextInt(-100, 101) / 100.0, (double)rnd->nextInt(-100, 101) / 100.0 };
+		//	double vel2 = rnd->nextInt(ASTEROID_MIN_VEL * 100, ASTEROID_MAX_VEL * 100) / 100.0;
+		//	double angle2 = rnd->nextInt(0, 360);
+		//	ast2->startAsteroid(*a->getPos(), dir2, vel2, angle2, a->getLevel());
+		//	asteroidsActive += 2;
+		//}
+		//a->setObject(false);
+		//asteroidsActive--;
 	}
 
 	//Crea asteroides en posiciones aleatorias y los mete al grupo de asteroides al inicio del juego
@@ -97,5 +145,11 @@ private:
 	//En segundos
 	const int MIN_LIFE_TIME = 5;
 	const int MAX_LIFE_TIME = 10;
+	//Asteroides
+	const double ASTEROID_W = 16;
+	const double ASTEROID_H = 16;
+	const double ASTEROID_DIFERENCE = 8;
+	const double ASTEROID_MAX_VEL = 2.6;
+	const double ASTEROID_MIN_VEL = 1.2;
 };
 
