@@ -22,6 +22,12 @@
     <Filter Include="Header Files\Bullet">
       <UniqueIdentifier>{cbbcd386-bd69-44c0-b4df-92377cae4b7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Otros sistemas">
+      <UniqueIdentifier>{8d63b304-d1c3-4012-882c-b95db1409e06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Otros componentes">
+      <UniqueIdentifier>{965e7cd7-4a13-4e7f-b956-c4ad9d00a206}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -150,6 +156,9 @@
     <ClCompile Include="FighterGun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkML.h">
@@ -159,9 +168,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Collisions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ecs.h">
@@ -183,9 +189,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RandomNumberGenerator.h">
@@ -218,25 +221,10 @@
     <ClInclude Include="TexturesManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DefFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameCtrlSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LifeTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mpl.h">
@@ -251,28 +239,13 @@
     <ClInclude Include="PacMan.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PacManSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Rotation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Score.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StarsPool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StarsSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AsteroidPool.h">
@@ -298,6 +271,45 @@
     </ClInclude>
     <ClInclude Include="FighterGun.h">
       <Filter>Header Files\Fighter</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionSystem.h">
+      <Filter>Header Files\Otros sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCtrlSystem.h">
+      <Filter>Header Files\Otros sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>Header Files\Otros sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="PacManSystem.h">
+      <Filter>Header Files\Otros sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="StarsSystem.h">
+      <Filter>Header Files\Otros sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Header Files\Otros sistemas</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\Otros componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageComponent.h">
+      <Filter>Header Files\Otros componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeTime.h">
+      <Filter>Header Files\Otros componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>Header Files\Otros componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\Otros componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Header Files\Otros componentes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

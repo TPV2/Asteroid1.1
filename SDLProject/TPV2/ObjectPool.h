@@ -44,6 +44,8 @@ public:
 		return objsPtrs_;
 	}
 
+
+
 private:
 	//Tamañp del pool
 	size_t size_;

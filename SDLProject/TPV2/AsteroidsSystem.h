@@ -6,9 +6,6 @@
 #include "AsteroidPool.h"
 #include <SDL_stdinc.h> // for Uint32
 
-//NO va aquí
-#include <random>
-
 
 class AsteroidsSystem :
 	public System
@@ -115,27 +112,8 @@ public:
 	}
 
 	//Movimiento de los asteroides
-	void update()override {
-
-		for (auto& e : mngr_->getGroupEntities(ecs::_grp_Asteroid)) {
-			if (!e->isActive()) { return; };
-				
-			Transform* tr = e->getComponent<Transform>(ecs::Transform);
-			if (tr != nullptr) {
-
-				Vector2D newPos = { tr->position_.getX() + tr->velocity_.getX(),
-					tr->position_.getY() + tr->velocity_.getY()  };
-				tr->position_.set(newPos);
-				//Si sale de la pantalla
-				if (tr->position_.getX() < 0) tr->position_.set({ (double)game_->getWindowWidth(), tr->position_.getY() });			//Izquierda
-				else if (tr->position_.getX() > game_->getWindowWidth()) tr->position_.set({ 0, tr->position_.getY() });			//Derecha
-
-				if (tr->position_.getY() < 0) tr->position_.set({ tr->position_.getX(), (double)game_->getWindowHeight() });		//Arriba
-				else if (tr->position_.getY() > game_->getWindowHeight()) tr->position_.set({ tr->position_.getX(), 0 });			//Abajo
-			}
-
-		}
-	}
+	void update()override;
+	
 private:
 	const int MAX_LEVEL = 3;
 	const double MIN_SPEED = -2.5;

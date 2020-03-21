@@ -20,8 +20,8 @@ vector<Resources::ImageInfo> Resources::images_{
 		{ PacMan, "resources/images/pacman.png" }, //
 		{ Asteroid,"resources/images/asteroid.png" },
 		{ Fighter, "resources/images/airplanes.png"},
-		{ Bullet, "resources/images/misile.png"}
-
+		{ Bullet, "resources/images/misile.png"},
+		{ Heart, "resources/images/heart.png"}
 };
 
 vector<Resources::TextMsgInfo> Resources::messages_ {

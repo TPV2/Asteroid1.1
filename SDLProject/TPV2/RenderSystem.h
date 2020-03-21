@@ -11,6 +11,7 @@
 #include "Score.h"
 #include "SDLGame.h"
 #include "Texture.h"
+#include "Health.h"
 
 class RenderSystem: public System {
 public:
@@ -63,12 +64,24 @@ public:
 	void drawScore() {
 		auto sc =
 				mngr_->getHandler(ecs::_hdlr_GameState)->getComponent<Score>(ecs::Score);
-		Texture scoreMsg(game_->getRenderer(), std::to_string(sc->points_),
+		Texture scoreMsg(game_->getRenderer(), std::to_string(sc->getPoints()),
 				game_->getFontMngr()->getFont(Resources::ARIAL24),
 				{ COLOR(0x0000ffff) });
 		scoreMsg.render(game_->getWindowWidth() / 2 - scoreMsg.getWidth() / 2,
 				10);
+	}
 
+	//Renderiza los corazones en función de las vidas que tenga el fighter
+	void drawLives() {
+		auto figHealth = mngr_->getHandler(ecs::_hdlr_Fighter)->getComponent<Health>(ecs::Health);
+		int GAP = 25;
+		heartRect.x = HEART_START_X;
+		for (int i = 0; i < figHealth->getLives(); i++) {
+
+			auto tex = game_->getTextureMngr()->getTexture(Resources::Heart);	
+			tex->render(heartRect);
+			heartRect.x += GAP;
+		}	
 	}
 
 	void update() override {
@@ -83,25 +96,22 @@ public:
 		}
 		
 		//Draw fighter
-		SDL_Rect clipRect =
-			RECT(SPRITESHEET_PLANE_X, SPRITESHEET_PLANE_Y, SPRITESHEET_PLANE_W, SPRITESHEET_PLANE_H);
-		draw(mngr_->getHandler(ecs::_hdlr_Fighter), clipRect);
+		draw(mngr_->getHandler(ecs::_hdlr_Fighter), planeRect);
 		
-
-		/*// draw pacman
-		draw(mngr_->getHandler(ecs::_hdlr_PacMan));*/
 
 		// draw score
 		drawScore();
+
+		// draw lives
+		drawLives();
 
 		// info message
 		Texture msg(game_->getRenderer(),"Press ENTER to add More Stars", game_->getFontMngr()->getFont(Resources::ARIAL24),{COLOR(0xff0000ff)});
 		msg.render(game_->getWindowWidth()/2-msg.getWidth()/2,game_->getWindowHeight()-msg.getHeight()-10);
 	}
 private:
-	const int SPRITESHEET_PLANE_X = 47;
-	const int SPRITESHEET_PLANE_Y = 90;
-	const int SPRITESHEET_PLANE_W = 207;
-	const int SPRITESHEET_PLANE_H = 250;
+	SDL_Rect planeRect = RECT(47,90,207,250);
+	SDL_Rect heartRect = RECT(10, 10, 25, 25);
+	const int HEART_START_X = 10;
 };
 

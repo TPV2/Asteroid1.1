@@ -20,7 +20,7 @@ public:
 	}
 
 	//Constructor de asteroides
-	inline Entity* construct_(Vector2D pos, Vector2D speed, double width, double height) {
+	inline Entity* construct_(Vector2D pos, Vector2D speed, double width, double height,double rot) {
 		Entity* currBullet = pool_.getObj();
 		if (currBullet != nullptr) {
 			#pragma region Transform
@@ -30,6 +30,7 @@ public:
 			tr->velocity_.set(speed);
 			tr->width_ = width;
 			tr->height_ = height;
+			tr->rotation_ = rot;
 			#pragma endregion
 		}
 		return currBullet;
@@ -44,6 +45,13 @@ public:
 	template<typename...Targs>
 	inline static Entity* construct(Targs&&...args) {
 		return BulletPool::instance()->construct_(std::forward<Targs>(args)...);
+	}
+
+	//Desactiva todos los elementos del pool
+	void disableAll() {
+		for (auto e : pool_.getPool()) {
+			e->setActive(false);
+		}
 	}
 private:
 	//Pool de asteroides

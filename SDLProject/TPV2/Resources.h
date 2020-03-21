@@ -23,6 +23,7 @@ public:
 		Asteroid,
 		Fighter,
 		Bullet,
+		Heart,
 		// text
 		HelloWorld,
 		PressAnyKey,

@@ -24,8 +24,9 @@ public:
 
 	void onCollision(Entity *s) {
 		s->setActive(false);
-		auto sc = mngr_->getHandler(ecs::_hdlr_GameState)->getComponent<Score>(ecs::Score);
-		sc->points_++;
+		//auto sc = mngr_->getHandler(ecs::_hdlr_GameState)->getComponent<Score>(ecs::Score);
+		//sc->addPoints
+		//sc->points_++;
 	}
 
 	void addStars(std::size_t n) {

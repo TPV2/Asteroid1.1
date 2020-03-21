@@ -58,11 +58,20 @@ public:
 
 	//Devuelve el primer elemento libre dentro del pool
 	Entity* getFistFreeEntity() { return pool_.getObj(); };
+	
+	//Desactiva todos los elementos del pool
+	void disableAll() {
+		for (auto e : pool_.getPool()) {
+			e->setActive(false);
+		}
+	}
+	//Constructor por defecto a 10 asterorides
+	static const int asteroidsStart = 1;
 private:
+
 	//Pool de asteroides
 	ObjectPool<Entity> pool_;
-	//Constructor por defecto a 10 asterorides
-	AsteroidPool() : AsteroidPool(10) {};
+	AsteroidPool() : AsteroidPool(asteroidsStart) {};
 	
 	//Constructor de los asteroides
 	AsteroidPool(std::size_t n) :

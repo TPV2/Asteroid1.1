@@ -4,6 +4,8 @@
 #include "Manager.h"
 #include "BulletPool.h"
 #include "InputHandler.h"
+#include "GameCtrlSystem.h"
+#include "Score.h"
 
 class BulletSystem : public System {
 	
@@ -11,15 +13,16 @@ public:
 	BulletSystem() :System(ecs::_sys_Bullets) {};
 	// - añadir una bala al juego, como en la práctica 1 pero usando entidades.
 	// - no olvidar añadir la bala al grupo _grp_Bullet
-	void shoot(Vector2D pos, Vector2D vel, double width, double height) {
-		Entity* newBullet = mngr_->addEntity<BulletPool>(pos, vel, width, height);
+	void shoot(Vector2D pos, Vector2D vel, double width, double height, double rot) {
+		Entity* newBullet = mngr_->addEntity<BulletPool>(pos, vel, width, height, rot);
 		if (newBullet != nullptr) {
 			newBullet->addToGroup(ecs::_grp_Bullet);
 		}
 	}
-	// - desactivar la bala “b”
+	//Desactiva la bala y agrega los puntos
 	void onCollisionWithAsteroid(Entity* b) {
 		b->setActive(false);
+		GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), Score)->addPoints(10);
 	}
 	// - si el juego está parado no hacer nada.
 	// - mover las balas y desactivar las que se salen de la ventana

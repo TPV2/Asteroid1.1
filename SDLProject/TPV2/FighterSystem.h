@@ -5,6 +5,9 @@
 #include "Manager.h"
 #include "ImageComponent.h"
 #include "BulletSystem.h"
+#include "Health.h"
+#include "SDLGame.h"
+#include "GameCtrlSystem.h"
 
 const int IMPULSE = 10;
 const int ANGLE_VEL = 10;
@@ -25,18 +28,29 @@ public:
 		fighter_ = mngr_->addEntity();
 		tr_ = fighter_->addComponent<Transform>(Vector2D(100.0, 100), Vector2D(), 50, 50, 0);
 		fighter_->addComponent<ImageComponent>(game_->getTextureMngr()->getTexture(Resources::Fighter));
+		fighter_->addComponent<Health>();
 		mngr_->setHandler(ecs::_hdlr_Fighter, fighter_);
+		resetFighter();
 	}
 
-	// - poner el caza en el centro con velocidad 0 y rotación 0. No hace falta
-	// desactivar la entidad (no dibujarla si el juego está parado en RenderSystem).
+	//Gestiona los efectos que produce colisionar contra un asteroide
 	void onCollisionWithAsteroid() {
-		tr_->position_.set({ (double)game_->getWindowWidth() / 2, (double)game_->getWindowHeight() / 2 });
-		tr_->velocity_.set({ 0,0 });
+		resetFighter();
+		mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->onFighterDeath();
 	}
 
+	//Resetea el transform del fighter
+	void resetFighter() {
+		tr_->position_.set({ (double)(game_->getWindowWidth() / 2) - (tr_->width_ / 2),
+			(double)(game_->getWindowHeight() / 2) - (tr_->height_ / 2) });
+		tr_->velocity_.set({ 0,0 });
+		tr_->rotation_ = 0;
+	}
+
+	//Recibe el input, gestiona el movimiento del fighter y  comprueba las colsiones con los bordes
 	void update() override {
 		InputHandler* ih = InputHandler::instance();
+		auto gS = mngr_->getHandler(ecs::_hdlr_GameState)->getComponent<GameState>(ecs::GameState);
 		assert(tr_ != nullptr);
 		if (ih->keyDownEvent()) {
 			if (ih->isKeyDown(SDLK_RIGHT)) {
@@ -76,7 +90,6 @@ public:
 		tr_->position_.setX(tr_->position_.getX() + tr_->velocity_.getX());
 		tr_->position_.setY(tr_->position_.getY() + tr_->velocity_.getY());
 	}
-	const Transform* getTranform() { return tr_; };
 private:
 	Entity* fighter_;
 	Transform* tr_;

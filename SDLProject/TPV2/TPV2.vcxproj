@@ -34,6 +34,7 @@
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FontsManager.cpp" />
     <ClCompile Include="GameCtrlSystem.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="jute.cpp" />
@@ -81,6 +82,7 @@
     <ClInclude Include="Font.h" />
     <ClInclude Include="FontsManager.h" />
     <ClInclude Include="GameCtrlSystem.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="InputHandler.h" />
