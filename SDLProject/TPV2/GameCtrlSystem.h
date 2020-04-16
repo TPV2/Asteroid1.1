@@ -10,7 +10,6 @@
 #include "BulletPool.h"
 
 
-
 class GameCtrlSystem: public System {
 private:
 	const int START_ASTEROIDS = 10;
@@ -38,11 +37,20 @@ public:
 	void update() override {
 		auto ih = game_->getInputHandler();
 		auto gS = GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState);
-
-		if (gS->getCurrSTate() == STATE::STOPPED && ih->keyDownEvent() && ih->isKeyDown(SDLK_RETURN)) {
-			gS->setCurrState(STATE::STARTED);
-			mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->addAsteroids(START_ASTEROIDS);
-			auto figHealth = GETCMP2(mngr_->getHandler(ecs::_hdlr_Fighter), Health);
+		if (ih->keyDownEvent()) {
+			if (gS->getCurrSTate() == STATE::STOPPED && ih->isKeyDown(SDLK_RETURN)) {
+				game_->getAudioMngr()->playChannel(Resources::Restart, 0, 6);
+				gS->setCurrState(STATE::STARTED);
+				mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->addAsteroids(START_ASTEROIDS);
+			}
+			//Falta repasar
+			else if (gS->getCurrSTate() == STATE::FINISHED && ih->isKeyDown(SDLK_RETURN))
+			{	
+				gS->setCurrState(STATE::STARTED);
+				mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->addAsteroids(START_ASTEROIDS);
+				GETCMP2(mngr_->getHandler(ecs::_hdlr_Fighter), Health)->resetLives();
+				GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), Score)->resetPoints();
+			}
 		}
 	}
 
@@ -57,6 +65,11 @@ public:
 		auto gS = GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState);
 		figHealth->takeLife();
 		figHealth->isAlive() ? gS->setCurrState(STATE::STOPPED) : gS->setCurrState(STATE::FINISHED);
+		if (gS->getCurrSTate() == STATE::FINISHED) {
+			game_->getAudioMngr()->playChannel(Resources::GameOverSound, 0, 5);
+		}
+		//esto me da error
+		//mngr_->getSystem<FighterGun>(ecs::_sys_FighterGun)->resetShootTime();
 	}
 
 	//Cuando se queda sin asteroides que disparar

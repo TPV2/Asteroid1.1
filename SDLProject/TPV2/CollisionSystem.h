@@ -22,8 +22,10 @@ public:
 					auto etr = currAsteroid->getComponent<Transform>(ecs::Transform);	//asteroidTransform
 					//Comprueba la colision entre los asteroides y el avión
 					if (Collisions::collides(figTr->position_, figTr->width_, figTr->height_, etr->position_, etr->width_, etr->height_)) {
+						game_->getAudioMngr()->playChannel(Resources::Lose, 0, 4);
 						mngr_->getSystem<AsteroidsSystem>(ecs::_grp_Asteroid)->onCollision(currAsteroid);
 						mngr_->getSystem<FighterSystem>(ecs::_sys_Fighter)->onCollisionWithAsteroid();	//Pierde una vida
+						return;
 					}
 
 					//Comprueba la colisión entre las balas y los asteroides
@@ -32,10 +34,22 @@ public:
 						{
 							auto bulletTr = currBullet->getComponent<Transform>(ecs::Transform);	//bulletTransform
 							if (Collisions::collides(bulletTr->position_, bulletTr->width_, bulletTr->height_, etr->position_, etr->width_, etr->height_)) {
-								mngr_->getSystem<AsteroidsSystem>(ecs::_grp_Asteroid)->onCollisionWithBullet(currAsteroid);	//Divide el meteorito en 2
+								mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->onCollisionWithBullet(currAsteroid);	//Divide el meteorito en 2
 								mngr_->getSystem<BulletSystem>(ecs::_sys_Bullets)->onCollisionWithAsteroid(currBullet);		//Desactiva la bala
 							}
 						}
+					}
+
+					for (auto& otherAst : mngr_->getGroupEntities(ecs::_grp_Asteroid)) {
+						if (otherAst->isActive() && otherAst != currAsteroid){
+							auto otherTr = otherAst->getComponent<Transform>(ecs::Transform);
+							if (Collisions::collides(otherTr->position_, otherTr->width_, otherTr->height_, etr->position_, etr->width_, etr->height_)) {
+								mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->onCollisionAsteroid(currAsteroid,otherTr->velocity_);
+								mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->onCollisionAsteroid(otherAst,etr->velocity_);	
+
+							}
+						}
+
 					}
 				}
 

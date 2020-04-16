@@ -27,7 +27,6 @@ public:
 	inline Entity* construct_(Vector2D pos, Vector2D scale, Vector2D speed, int rotation, int level, Uint32 lifeTime) {
 		Entity* currAsteroid = pool_.getObj();
 		if (currAsteroid != nullptr) {
-			#pragma region Transform
 			currAsteroid->setActive(true);
 			Transform* tr = currAsteroid->getComponent<Transform>(ecs::Transform);
 			tr->position_.set(pos);
@@ -36,11 +35,10 @@ public:
 			tr->height_ = scale.getY();
 			tr->velocity_.set(speed);
 			currAsteroid->getComponent<Rotation>(ecs::Rotation)->rotation_ = rotation;
-			#pragma endregion
-			AsteroidLifeTime* alt = currAsteroid->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
-			alt->level_ = level;
-			alt->lifeTime_ = lifeTime * 1000;
-			alt->creatiomTime_ = SDLGame::instance()->getTime();
+			AsteroidLifeTime* astLifeTime = currAsteroid->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
+			astLifeTime->setLevel(level);
+			astLifeTime->setLifeTime(lifeTime * 1000);
+			astLifeTime->startTime();
 		}
 		return currAsteroid;
 	}
@@ -65,17 +63,19 @@ public:
 			e->setActive(false);
 		}
 	}
-	//Constructor por defecto a 10 asterorides
-	static const int asteroidsStart = 1;
+
 private:
+	//Constructor por defecto a 10 asterorides
+	static const int INIT_AST = 15;
 
 	//Pool de asteroides
 	ObjectPool<Entity> pool_;
-	AsteroidPool() : AsteroidPool(asteroidsStart) {};
+	AsteroidPool() : AsteroidPool(INIT_AST) {};
 	
 	//Constructor de los asteroides
 	AsteroidPool(std::size_t n) :
 		pool_(n) {
+		cout << pool_.getPool().size() << endl;
 		for (Entity* e : pool_.getPool()) {
 			e->addComponent<Transform>();
 			e->addComponent<Rotation>();

@@ -11,8 +11,7 @@ class BulletSystem : public System {
 	
 public:
 	BulletSystem() :System(ecs::_sys_Bullets) {};
-	// - añadir una bala al juego, como en la práctica 1 pero usando entidades.
-	// - no olvidar añadir la bala al grupo _grp_Bullet
+	//Dispara un proyectil
 	void shoot(Vector2D pos, Vector2D vel, double width, double height, double rot) {
 		Entity* newBullet = mngr_->addEntity<BulletPool>(pos, vel, width, height, rot);
 		if (newBullet != nullptr) {
@@ -24,9 +23,11 @@ public:
 		b->setActive(false);
 		GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), Score)->addPoints(10);
 	}
-	// - si el juego está parado no hacer nada.
-	// - mover las balas y desactivar las que se salen de la ventana
+	
+	//Mueve las balas y las desactiva si salen de la pantalla && aplica esto solo si esta en modo started
 	void update() override {
+
+		if (GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState)->getCurrSTate() != STATE::STARTED) { return; };
 
 		for (auto& currBullet : mngr_->getGroupEntities(ecs::_grp_Bullet)) {
 
@@ -40,7 +41,7 @@ public:
 				tr->position_.getX() < 0.0 ||
 				tr->position_.getY() > game_->getWindowHeight() ||
 				tr->position_.getY() < 0.0) {
-				tr->velocity_.set({ 0,0 });			//Se deja de mover
+				tr->velocity_.set({ 0,0 });		//Se deja de mover
 				currBullet->setActive(false);	//Se desactiva
 			}
 			else

@@ -47,7 +47,7 @@ private:
 	FighterGun* fighterGunSystem_;
 
 
-	const static int _WINDOW_WIDTH_ = 640;
-	const static int _WINDOW_HEIGHT_ = 480;
+	const static int _WINDOW_WIDTH_ = 1200;
+	const static int _WINDOW_HEIGHT_ = 600;
 
 };

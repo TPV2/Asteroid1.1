@@ -23,7 +23,6 @@ public:
 	inline Entity* construct_(Vector2D pos, Vector2D speed, double width, double height,double rot) {
 		Entity* currBullet = pool_.getObj();
 		if (currBullet != nullptr) {
-			#pragma region Transform
 			currBullet->setActive(true);
 			Transform* tr = currBullet->getComponent<Transform>(ecs::Transform);
 			tr->position_.set(pos);
@@ -31,7 +30,6 @@ public:
 			tr->width_ = width;
 			tr->height_ = height;
 			tr->rotation_ = rot;
-			#pragma endregion
 		}
 		return currBullet;
 	}
@@ -57,7 +55,7 @@ private:
 	//Pool de asteroides
 	ObjectPool<Entity> pool_;
 	//Constructor por defecto a 10 asterorides
-	BulletPool() : BulletPool(10) {};
+	BulletPool() : BulletPool(20) {};
 
 	//Constructor de los asteroides
 	BulletPool(std::size_t n) :

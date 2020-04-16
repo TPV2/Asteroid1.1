@@ -16,8 +16,8 @@ const double DECREASE_VEL = 0.97;
 class FighterSystem :
 	public System
 {
-
 public:
+	//Constructor del fighter
 	FighterSystem() :
 		System(ecs::_sys_Fighter),
 		fighter_(nullptr),
@@ -39,7 +39,7 @@ public:
 		mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->onFighterDeath();
 	}
 
-	//Resetea el transform del fighter
+	//Resetea el transform del fighter centrando la posición y poniendo la velocidad a cero
 	void resetFighter() {
 		tr_->position_.set({ (double)(game_->getWindowWidth() / 2) - (tr_->width_ / 2),
 			(double)(game_->getWindowHeight() / 2) - (tr_->height_ / 2) });
@@ -53,16 +53,22 @@ public:
 		auto gS = mngr_->getHandler(ecs::_hdlr_GameState)->getComponent<GameState>(ecs::GameState);
 		assert(tr_ != nullptr);
 		if (ih->keyDownEvent()) {
+			//Tecla a la derecha
 			if (ih->isKeyDown(SDLK_RIGHT)) {
 				tr_->rotation_ += ANGLE_VEL;
 			}
+			//Tecla a la izquierda
 			else if (ih->isKeyDown(SDLK_LEFT)) {
 				tr_->rotation_ -= ANGLE_VEL;
 			}
-			else if (ih->isKeyDown(SDLK_UP)) {	//Impulso * cos(ang) = x y sin = y
+			//Tecla hacia arriba
+			else if (ih->isKeyDown(SDLK_UP)) {
+				game_->getAudioMngr()->playChannel(Resources::Propulsion, 0, 3);
+				game_->getAudioMngr()->setChannelVolume(5, 3);
 				tr_->velocity_.set(Vector2D({ IMPULSE * sin(M_PI * tr_->rotation_ / 180.0f), -(IMPULSE * cos(M_PI * tr_->rotation_ / 180.0)) }));
 			}
 		}
+		//Se decrece la velocidad
 		else {
 			if ((tr_->velocity_.getX() != 0.0) || (tr_->velocity_.getY() != 0.0)) {
 				tr_->velocity_.set(Vector2D({ DECREASE_VEL * tr_->velocity_.getX(), DECREASE_VEL * tr_->velocity_.getY() }));

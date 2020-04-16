@@ -5,6 +5,8 @@
 #include "Transform.h"
 #include "AsteroidPool.h"
 #include <SDL_stdinc.h> // for Uint32
+#include "SDLGame.h" //Para audio manager
+#include "SDL_macros.h"
 
 
 class AsteroidsSystem :
@@ -14,33 +16,12 @@ public:
 	AsteroidsSystem() :
 		System(ecs::_sys_Asteroids) {}
 
-	//Gestiona la colisión de un asteroide
+
+	//Gestiona la colisión de un asteroide cuando colisiona contra el fighter
 	void onCollision(Entity* e) {
-
 		Transform* tr = e->getComponent<Transform>(ecs::Transform);
-		//¿BORRAR?
-		/*AsteroidLifeTime* alt = e->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
-		alt->level_ -= 1;
-		Entity* ast1 = AsteroidPool::instance()->getFistFreeEntity();
-
-		if (ast1 != nullptr && alt->level_ >= 1) {
-			ast1->setActive(true);
-			Transform* tr1 = ast1->getComponent<Transform>(ecs::Transform);
-			tr1->position_.set(tr->position_);
-			tr1->velocity_.set({ (double)game_->getRandGen()->nextInt(MIN_SPEED,MAX_SPEED),
-				(double)game_->getRandGen()->nextInt(MIN_SPEED,MAX_SPEED) });
-			tr1->height_ = tr->height_ - 10;
-			tr1->width_ = tr->width_ - 10;
-			tr1->rotation_ = game_->getRandGen()->nextInt(1, 2);
-			AsteroidLifeTime* alt = ast1->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
-			alt->level_--;
-			Uint32 lifeTime = game_->getRandGen()->nextInt(MIN_LIFE_TIME, MAX_LIFE_TIME);
-			alt->lifeTime_ = lifeTime * 1000;
-			alt->creatiomTime_ = SDLGame::instance()->getTime();
-			ast1->addToGroup(ecs::AsteroidPool);
-		}*/
 		e->setActive(false);
-		tr->position_.set({ 0,0 });
+		tr->position_.set({ -500,-500 });
 		tr->velocity_.set({ 0,0 });
 		tr->rotation_ = 0;
 		tr->height_ = 0;
@@ -49,70 +30,93 @@ public:
 
 	// - dividir el metoríto a
 	void onCollisionWithBullet(Entity* a) {
-		//auto alt = a->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
-		//Transform* atr = a->getComponent<Transform>(ecs::Transform);
-		//cout << "IMPACTADO METEORITO NIVEL: " << alt->level_;
-		//alt->level_ -= 1;
-		//if (alt->level_ >= 1) {
-		//	//Primer asteroide
-		//	Entity* ast1 = AsteroidPool::instance()->getFistFreeEntity();
-		//	Transform* ast1tr = ast1->getComponent<Transform>(ecs::Transform);
-		//	ast1tr->position_.set(atr->position_);
-		//	ast1tr->velocity_.set({ 1,1 });
-		//	ast1->setActive(true);
-		//	//Segundo asteroide
-		//	Entity* ast2 = AsteroidPool::instance()->getFistFreeEntity();
-		//	Transform* ast2tr = ast2->getComponent<Transform>(ecs::Transform);
-		//	ast2tr->position_.set(atr->position_);
-		//	ast2tr->velocity_.set({ 1,0 });
-		//	ast1->setActive(true);
-		//}
-		a->setActive(false);
+		//Sonido de explosión
+		game_->getAudioMngr()->playChannel(Resources::AudioId::Explosion, 0, 1);
+		game_->getAudioMngr()->setChannelVolume(7,1);
+		auto astLifeTime = a->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
+		astLifeTime->removeLevel();
+		if (astLifeTime->getAstLevel() >= 1) {
+			//el asteroide original
+			Transform* origialAst = a->getComponent<Transform>(ecs::Transform);
+			//Primer asteroide
+			Vector2D ast1Pos = origialAst->position_;
+			Vector2D ast1Scale = { origialAst->width_ / 2,origialAst->height_ / 2 };
+			Vector2D ast1Vel = {origialAst->velocity_.getX(),0};
+			double ast1Rot = origialAst->rotation_;
+			int ast1Lvl = astLifeTime->getAstLevel();
+			Uint32 ast1CurrLifeTime = game_->getTime();
+			Entity* ast1 = mngr_->addEntity<AsteroidPool>(ast1Pos, ast1Scale, ast1Vel, ast1Rot, ast1Lvl, ast1CurrLifeTime);
+			if (ast1 != nullptr) {
+				ast1->setActive(true);
+				ast1->addToGroup(ecs::_grp_Asteroid);
+			}
 
-		//CODIGO DE LA PRÁCTICA 1
-		//a->setLevel(a->getLevel() - 1);
-		//if (a->getLevel() >= 1) {
-		//	SRandBasedGenerator* rnd = new SRandBasedGenerator();
-		//	//Primer asteroide
-		//	Asteroid* ast1 = astPool.getObj();
-		//	Vector2D dir1 = { (double)rnd->nextInt(-100, 101) / 100.0, (double)rnd->nextInt(-100, 101) / 100.0 };
-		//	double vel1 = rnd->nextInt(ASTEROID_MIN_VEL * 100, ASTEROID_MAX_VEL * 100) / 100.0;
-		//	double angle1 = rnd->nextInt(0, 360);
-		//	ast1->startAsteroid(*a->getPos(), dir1, vel1, angle1, a->getLevel());
-		//	//Segundo asteroide
-		//	Asteroid* ast2 = astPool.getObj();
-		//	Vector2D dir2 = { (double)rnd->nextInt(-100, 101) / 100.0, (double)rnd->nextInt(-100, 101) / 100.0 };
-		//	double vel2 = rnd->nextInt(ASTEROID_MIN_VEL * 100, ASTEROID_MAX_VEL * 100) / 100.0;
-		//	double angle2 = rnd->nextInt(0, 360);
-		//	ast2->startAsteroid(*a->getPos(), dir2, vel2, angle2, a->getLevel());
-		//	asteroidsActive += 2;
-		//}
-		//a->setObject(false);
-		//asteroidsActive--;
+			//Segundo asteroide
+			Vector2D ast2Pos = origialAst->position_;
+			Vector2D ast2Scale = { origialAst->width_ / 2,origialAst->height_ / 2 };
+			Vector2D ast2Vel = { 0, origialAst->velocity_.getY() };
+			double ast2Rot = origialAst->rotation_;
+			int ast2Lvl = astLifeTime->getAstLevel();
+			Uint32 ast2CurrLifeTime = game_->getTime();
+			Entity* ast2 = mngr_->addEntity<AsteroidPool>(ast2Pos, ast2Scale, ast2Vel, ast2Rot, ast2Lvl, ast2CurrLifeTime);
+			if (ast2 != nullptr) {
+				ast2->setActive(true);
+				ast2->addToGroup(ecs::_grp_Asteroid);
+			}
+		}
+		a->setActive(false);
 	}
 
 	//Crea asteroides en posiciones aleatorias y los mete al grupo de asteroides al inicio del juego
 	void addAsteroids(std::size_t n) {
 		for (auto i(0u); i < n; i++) {
-			int r = game_->getRandGen()->nextInt(1, 2);
-			Vector2D pos = { (double)game_->getRandGen()->nextInt(0 , game_->getWindowWidth()),
-				(double)game_->getRandGen()->nextInt(0, game_->getWindowHeight()) };
+			int rotation = game_->getRandGen()->nextInt(1, 2);
 			int level = game_->getRandGen()->nextInt(0, MAX_LEVEL);
-			Vector2D scale = { (double)MAX_SCALE - (double)level * 10,(double)MAX_SCALE - (double)level * 10 };
+			Vector2D pos;
+			double width = 25 + 10 * level, height = 25 + 10 * level;
+			SDL_Rect fighterBox;
+			do{
+				pos = { (double)game_->getRandGen()->nextInt(0 , game_->getWindowWidth()),
+					(double)game_->getRandGen()->nextInt(0, game_->getWindowHeight()) };
+				fighterBox = RECT(pos.getX(), pos.getY(), width, height);
+			}
+			while (checkPlayerPos(&fighterBox));
+
 			Vector2D speed{ 0,0 };
 			while (speed.getX() == 0) speed.setX(game_->getRandGen()->nextInt(MIN_SPEED, MAX_SPEED));
 			while (speed.getY() == 0) speed.setY(game_->getRandGen()->nextInt(MIN_SPEED, MAX_SPEED));
 
 			Uint32 lt = game_->getRandGen()->nextInt(MIN_LIFE_TIME, MAX_LIFE_TIME);
 
-			Entity* e = mngr_->addEntity<AsteroidPool>(pos, scale, speed, r, level, lt);
+			Entity* e = mngr_->addEntity<AsteroidPool>(pos, Vector2D{ width,height }, speed, rotation, level, lt);
 			if (e != nullptr)
 				e->addToGroup(ecs::_grp_Asteroid);
 		}
 	}
 
+	void onCollisionAsteroid(Entity* ast1,Vector2D otherVel) {
+		auto ast1Tr = ast1->getComponent<Transform>(ecs::Transform);
+		ast1Tr->velocity_.setX(otherVel.getX() * -1);
+		ast1Tr->velocity_.setY(otherVel.getY() * -1);
+		ast1Tr->rotation_++;
+	}
+
 	//Movimiento de los asteroides
 	void update()override;
+
+	//comprueba si un asteroide se está creando colisionando contra el fighter
+	bool checkPlayerPos(SDL_Rect* currAst) {
+		auto fighterTr = mngr_->getHandler(ecs::_hdlr_Fighter)->getComponent<Transform>(ecs::Transform);
+		SDL_Rect fighterBox = RECT((int)fighterTr->position_.getX(), (int)fighterTr->position_.getY(), 
+			(int)fighterTr->width_ + 250, (int)fighterTr->height_ + 250);
+		if (SDL_HasIntersection(currAst, &fighterBox)) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 private:
 	const int MAX_LEVEL = 3;

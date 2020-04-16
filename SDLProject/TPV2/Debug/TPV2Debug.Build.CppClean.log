@@ -1,10 +1,10 @@
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\vc142.pdb
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\vc142.idb
-g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\manager.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\main.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\jute.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\inputhandler.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\health.obj
+g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\gamestate.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\gamectrlsystem.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\fontsmanager.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\font.obj
@@ -20,7 +20,6 @@ g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\audioman
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\asteroidssystem.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\asteroidpool.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\asteroidlifetime.obj
-g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\texturesmanager.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\texture.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\system.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\starssystem.obj
@@ -40,9 +39,10 @@ g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\pacman.o
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\offacotry.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\objectpool.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\objectfactory.obj
+g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\manager.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\vector2d.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\transform.obj
-g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\gamestate.obj
+g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\tpv2\debug\texturesmanager.obj
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\bin\tpv2debug.exe
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\bin\tpv2debug.ilk
 g:\2do\2docuatrimestre\tpv2\practicas\asteroid1.1\sdlproject\bin\tpv2debug.pdb

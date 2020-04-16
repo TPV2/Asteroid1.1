@@ -12,6 +12,7 @@
 #include "SDLGame.h"
 #include "Texture.h"
 #include "Health.h"
+#include "GameState.h"
 
 class RenderSystem: public System {
 public:
@@ -66,7 +67,7 @@ public:
 				mngr_->getHandler(ecs::_hdlr_GameState)->getComponent<Score>(ecs::Score);
 		Texture scoreMsg(game_->getRenderer(), std::to_string(sc->getPoints()),
 				game_->getFontMngr()->getFont(Resources::ARIAL24),
-				{ COLOR(0x0000ffff) });
+				{ COLOR(0xffffffff) });
 		scoreMsg.render(game_->getWindowWidth() / 2 - scoreMsg.getWidth() / 2,
 				10);
 	}
@@ -106,8 +107,15 @@ public:
 		drawLives();
 
 		// info message
-		Texture msg(game_->getRenderer(),"Press ENTER to add More Stars", game_->getFontMngr()->getFont(Resources::ARIAL24),{COLOR(0xff0000ff)});
-		msg.render(game_->getWindowWidth()/2-msg.getWidth()/2,game_->getWindowHeight()-msg.getHeight()-10);
+		if (GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState)->getCurrSTate() == STATE::STOPPED) {
+			Texture msg(game_->getRenderer(), "Press ENTER next game", game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0xffffffff) });
+			msg.render(game_->getWindowWidth() / 2 - msg.getWidth() / 2, game_->getWindowHeight() - msg.getHeight() - 10);
+		}
+		if(GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState)->getCurrSTate() == STATE::FINISHED)
+		{
+			Texture msg(game_->getRenderer(), "Press ENTER for restart game", game_->getFontMngr()->getFont(Resources::ARIAL24), { COLOR(0xffffffff) });
+			msg.render(game_->getWindowWidth() / 2 - msg.getWidth() / 2, game_->getWindowHeight() - msg.getHeight() - 10);
+		}
 	}
 private:
 	SDL_Rect planeRect = RECT(47,90,207,250);

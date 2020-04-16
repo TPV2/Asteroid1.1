@@ -24,6 +24,8 @@ public:
 		Fighter,
 		Bullet,
 		Heart,
+		Background,
+
 		// text
 		HelloWorld,
 		PressAnyKey,
@@ -38,7 +40,15 @@ public:
 
 		// sound effects
 		Wall_Hit,
-		Paddle_Hit
+		Paddle_Hit,
+		Error,
+		Rocket,
+		Explosion,
+		Propulsion,
+		Win,
+		Lose,
+		GameOverSound,
+		Restart
 	};
 
 	enum FontId : std::size_t {

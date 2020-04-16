@@ -24,7 +24,6 @@ void AsteroidsSystem::update() {
 		}
 
 	}
-	 
 	/*if (GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState)->getCurrSTate() == STATE::STARTED && totalAsteroids == 0) {
 		mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->onAsteroidsExtenction();
 	}*/

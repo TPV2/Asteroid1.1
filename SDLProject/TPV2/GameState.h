@@ -2,7 +2,7 @@
 #include "Component.h"
 
 //Enum que representa el estado del juego
-enum class STATE
+enum class STATE 
 {
 	STOPPED = 0,//Antes de empezar el juego
 	STARTED,	//Cuando se está jugando

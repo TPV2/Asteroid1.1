@@ -27,7 +27,7 @@ PacMan::~PacMan() {
 
 void PacMan::initGame() {
 
-	game_ = SDLGame::init("Stars", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
+	game_ = SDLGame::init("Asteroids", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
 	//StarsPool::init(5);
 	AsteroidPool::init();
 	BulletPool::init(30);
@@ -58,6 +58,7 @@ void PacMan::start() {
 		Uint32 startTime = game_->getTime();
 		SDL_SetRenderDrawColor(game_->getRenderer(), COLOR(0x00AAAAFF));
 		SDL_RenderClear(game_->getRenderer());
+		game_->getTextureMngr()->getTexture(Resources::Background)->render({ 0,0,_WINDOW_WIDTH_,_WINDOW_HEIGHT_ });
 
 		ih->update();
 		if (ih->keyDownEvent()) {
