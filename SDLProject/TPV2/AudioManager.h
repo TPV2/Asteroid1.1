@@ -4,16 +4,18 @@
 
 using namespace std;
 
-/*
-	Para efectos de sonido
-	canal 0 para el efecto de los cohetes al disparar
-	canal 1 para explosión de los asteroides
-	canal 2 para error
-	canal 3 para propulsión
-	canal 4 para cuando pierdes
-	canal 5 gameOver
-	canal 6 para resetear
-*/
+enum class EFFECTS : int
+{
+	Shot = 0,	//canal 0 para el efecto de los cohetes al disparar
+	AstExp,		//canal 1 para explosión de los asteroides
+	Colddown,	//canal 2 para error
+	Movement,	//canal 3 para propulsión
+	LoseLife,	//canal 4 para cuando pierdes
+	LoseGame,	//canal 5 gameOver
+	ResetGame,	//canal 6 para resetear
+	WinGame,	//canal 7 para cuando ganas
+};
+
 class AudioManager {
 public:
 	AudioManager();

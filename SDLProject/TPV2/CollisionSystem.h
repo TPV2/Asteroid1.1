@@ -6,6 +6,7 @@
 #include "AsteroidsSystem.h"
 #include "FighterSystem.h"
 #include "Transform.h"
+#include "BulletSystem.h"
 
 class CollisionSystem: public System {
 public:
@@ -40,13 +41,13 @@ public:
 						}
 					}
 
+					//Comprueba colisiones entre asteroides
 					for (auto& otherAst : mngr_->getGroupEntities(ecs::_grp_Asteroid)) {
 						if (otherAst->isActive() && otherAst != currAsteroid){
 							auto otherTr = otherAst->getComponent<Transform>(ecs::Transform);
 							if (Collisions::collides(otherTr->position_, otherTr->width_, otherTr->height_, etr->position_, etr->width_, etr->height_)) {
 								mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->onCollisionAsteroid(currAsteroid,otherTr->velocity_);
 								mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->onCollisionAsteroid(otherAst,etr->velocity_);	
-
 							}
 						}
 

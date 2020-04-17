@@ -5,6 +5,8 @@
 #include "FighterSystem.h"
 #include "Transform.h"
 #include "GameState.h"
+//revisados
+#include "BulletSystem.h" //Para agregar las balas
 
 class FighterGun :
 	public System
@@ -18,8 +20,6 @@ private:
 	const double BULLET_W = 14;
 	//Valor del alto de la bala
 	const double BULLET_H = 50;
-	//Bool que representa si se está escuchando el sonido del error
-	bool errorPlay = false;
 public:
 	//constructor del fighterGun
 	FighterGun():
@@ -46,7 +46,7 @@ public:
 			}
 			else
 			{
-				game_->getAudioMngr()->playChannel(Resources::Error,0,2);
+				game_->getAudioMngr()->playChannel(Resources::Error, 0, (int)EFFECTS::Colddown);
 			}
 		}
 	}

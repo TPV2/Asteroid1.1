@@ -11,6 +11,7 @@ class BulletSystem : public System {
 	
 public:
 	BulletSystem() :System(ecs::_sys_Bullets) {};
+	
 	//Dispara un proyectil
 	void shoot(Vector2D pos, Vector2D vel, double width, double height, double rot) {
 		Entity* newBullet = mngr_->addEntity<BulletPool>(pos, vel, width, height, rot);
@@ -18,7 +19,8 @@ public:
 			newBullet->addToGroup(ecs::_grp_Bullet);
 		}
 	}
-	//Desactiva la bala y agrega los puntos
+	
+//Desactiva la bala y agrega los puntos
 	void onCollisionWithAsteroid(Entity* b) {
 		b->setActive(false);
 		GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), Score)->addPoints(10);

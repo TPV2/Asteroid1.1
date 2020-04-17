@@ -49,6 +49,7 @@ vector<Resources::SoundInfo> Resources::sounds_ {
 		{ Lose,			"resources/sound/lose.wav" },
 		{ GameOverSound,"resources/sound/gameOver.wav" },
 		{ Restart,		"resources/sound/restart.ogg" },
+		{ Rebound,		"resources/sound/rebote.mp3" },
 		{ Explosion,	"resources/sound/explosion.wav" }
 };
 

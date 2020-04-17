@@ -16,7 +16,6 @@ public:
 	AsteroidsSystem() :
 		System(ecs::_sys_Asteroids) {}
 
-
 	//Gestiona la colisión de un asteroide cuando colisiona contra el fighter
 	void onCollision(Entity* e) {
 		Transform* tr = e->getComponent<Transform>(ecs::Transform);
@@ -28,11 +27,11 @@ public:
 		tr->width_ = 0;
 	}
 
-	// - dividir el metoríto a
+	//Divide un asteroide si tiene nivel 1 o más
 	void onCollisionWithBullet(Entity* a) {
 		//Sonido de explosión
-		game_->getAudioMngr()->playChannel(Resources::AudioId::Explosion, 0, 1);
-		game_->getAudioMngr()->setChannelVolume(7,1);
+		game_->getAudioMngr()->playChannel(Resources::AudioId::Explosion, 0, (int)EFFECTS::AstExp);
+		game_->getAudioMngr()->setChannelVolume(5, (int)EFFECTS::AstExp);
 		auto astLifeTime = a->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
 		astLifeTime->removeLevel();
 		if (astLifeTime->getAstLevel() >= 1) {
@@ -94,6 +93,7 @@ public:
 		}
 	}
 
+	//Cambia las velocidades entre dos asteroides
 	void onCollisionAsteroid(Entity* ast1,Vector2D otherVel) {
 		auto ast1Tr = ast1->getComponent<Transform>(ecs::Transform);
 		ast1Tr->velocity_.setX(otherVel.getX() * -1);
@@ -104,7 +104,7 @@ public:
 	//Movimiento de los asteroides
 	void update()override;
 
-	//comprueba si un asteroide se está creando colisionando contra el fighter
+	//comprueba si un asteroide se está creando sobre el figther 
 	bool checkPlayerPos(SDL_Rect* currAst) {
 		auto fighterTr = mngr_->getHandler(ecs::_hdlr_Fighter)->getComponent<Transform>(ecs::Transform);
 		SDL_Rect fighterBox = RECT((int)fighterTr->position_.getX(), (int)fighterTr->position_.getY(), 
@@ -117,8 +117,14 @@ public:
 			return false;
 		}
 	}
+
+	//Devuelve la cantidad de asteroides activos en el juego
+	const int getAsteroidsActive() { return asteroidsActive; };
 	
 private:
+	//Cantidad de asteroides activos
+	int asteroidsActive = 0;
+
 	const int MAX_LEVEL = 3;
 	const double MIN_SPEED = -2.5;
 	const double MAX_SPEED = 2.5;

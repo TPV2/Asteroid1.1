@@ -48,7 +48,8 @@ public:
 		Win,
 		Lose,
 		GameOverSound,
-		Restart
+		Restart,
+		Rebound
 	};
 
 	enum FontId : std::size_t {

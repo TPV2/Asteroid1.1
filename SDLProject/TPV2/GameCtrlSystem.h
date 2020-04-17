@@ -39,18 +39,39 @@ public:
 		auto gS = GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState);
 		if (ih->keyDownEvent()) {
 			if (gS->getCurrSTate() == STATE::STOPPED && ih->isKeyDown(SDLK_RETURN)) {
-				game_->getAudioMngr()->playChannel(Resources::Restart, 0, 6);
-				gS->setCurrState(STATE::STARTED);
+				game_->getAudioMngr()->playChannel(Resources::Restart, 0, (int)EFFECTS::ResetGame);
 				mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->addAsteroids(START_ASTEROIDS);
+				gS->setCurrState(STATE::STARTED);
 			}
 			//Falta repasar
 			else if (gS->getCurrSTate() == STATE::FINISHED && ih->isKeyDown(SDLK_RETURN))
-			{	
+			{
+				game_->getAudioMngr()->playChannel(Resources::Restart, 0, (int)EFFECTS::ResetGame);
 				gS->setCurrState(STATE::STARTED);
 				mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->addAsteroids(START_ASTEROIDS);
 				GETCMP2(mngr_->getHandler(ecs::_hdlr_Fighter), Health)->resetLives();
 				GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), Score)->resetPoints();
 			}
+			else if (mngr_->getSystem<AsteroidsSystem>(ecs::_sys_Asteroids)->getAsteroidsActive() <= 0 && gS->getCurrSTate() == STATE::STARTED) {
+				onAsteroidsExtenction();
+			}
+		}
+
+
+
+		switch (gS->getCurrSTate())
+		{
+		case STATE::FINISHED:
+			cout << "FINISHED" << endl;
+			break;
+		case STATE::STARTED:
+			cout << "STARTED" << endl;
+			break;
+		case STATE::STOPPED:
+			cout << "STOPED" << endl;
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -68,6 +89,7 @@ public:
 		if (gS->getCurrSTate() == STATE::FINISHED) {
 			game_->getAudioMngr()->playChannel(Resources::GameOverSound, 0, 5);
 		}
+
 		//esto me da error
 		//mngr_->getSystem<FighterGun>(ecs::_sys_FighterGun)->resetShootTime();
 	}
@@ -75,8 +97,8 @@ public:
 	//Cuando se queda sin asteroides que disparar
 	void onAsteroidsExtenction() {
 		auto gS = GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState);
+		game_->getAudioMngr()->playChannel(Resources::Win, 0, (int)EFFECTS::WinGame);
 		gS->setCurrState(STATE::FINISHED);
 	}
-
 };
 

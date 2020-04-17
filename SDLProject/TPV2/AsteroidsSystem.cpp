@@ -4,11 +4,10 @@
 
 void AsteroidsSystem::update() {
 
-	int totalAsteroids = 0;
+	asteroidsActive = 0;
 	for (auto& e : mngr_->getGroupEntities(ecs::_grp_Asteroid)) {
 		if (!e->isActive()) { return; };
-
-		totalAsteroids++;
+		asteroidsActive++;
 		Transform* tr = e->getComponent<Transform>(ecs::Transform);
 		if (tr != nullptr) {
 
@@ -22,9 +21,5 @@ void AsteroidsSystem::update() {
 			if (tr->position_.getY() < 0) tr->position_.set({ tr->position_.getX(), (double)game_->getWindowHeight() });		//Arriba
 			else if (tr->position_.getY() > game_->getWindowHeight()) tr->position_.set({ tr->position_.getX(), 0 });			//Abajo
 		}
-
 	}
-	/*if (GETCMP2(mngr_->getHandler(ecs::_hdlr_GameState), GameState)->getCurrSTate() == STATE::STARTED && totalAsteroids == 0) {
-		mngr_->getSystem<GameCtrlSystem>(ecs::_sys_GameCtrl)->onAsteroidsExtenction();
-	}*/
 }

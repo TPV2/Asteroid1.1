@@ -4,10 +4,11 @@
 #include "Transform.h"
 #include "Manager.h"
 #include "ImageComponent.h"
-#include "BulletSystem.h"
+//#include "BulletSystem.h"
+//revisados
 #include "Health.h"
-#include "SDLGame.h"
 #include "GameCtrlSystem.h"
+
 
 const int IMPULSE = 10;
 const int ANGLE_VEL = 10;
@@ -30,6 +31,8 @@ public:
 		fighter_->addComponent<ImageComponent>(game_->getTextureMngr()->getTexture(Resources::Fighter));
 		fighter_->addComponent<Health>();
 		mngr_->setHandler(ecs::_hdlr_Fighter, fighter_);
+		inputHandler_ = InputHandler::instance();
+		audioManager_ = game_->getAudioMngr();
 		resetFighter();
 	}
 
@@ -49,22 +52,20 @@ public:
 
 	//Recibe el input, gestiona el movimiento del fighter y  comprueba las colsiones con los bordes
 	void update() override {
-		InputHandler* ih = InputHandler::instance();
-		auto gS = mngr_->getHandler(ecs::_hdlr_GameState)->getComponent<GameState>(ecs::GameState);
 		assert(tr_ != nullptr);
-		if (ih->keyDownEvent()) {
+		if (inputHandler_->keyDownEvent()) {
 			//Tecla a la derecha
-			if (ih->isKeyDown(SDLK_RIGHT)) {
+			if (inputHandler_->isKeyDown(SDLK_RIGHT)) {
 				tr_->rotation_ += ANGLE_VEL;
 			}
 			//Tecla a la izquierda
-			else if (ih->isKeyDown(SDLK_LEFT)) {
+			else if (inputHandler_->isKeyDown(SDLK_LEFT)) {
 				tr_->rotation_ -= ANGLE_VEL;
 			}
 			//Tecla hacia arriba
-			else if (ih->isKeyDown(SDLK_UP)) {
-				game_->getAudioMngr()->playChannel(Resources::Propulsion, 0, 3);
-				game_->getAudioMngr()->setChannelVolume(5, 3);
+			else if (inputHandler_->isKeyDown(SDLK_UP)) {
+				audioManager_->playChannel(Resources::Propulsion, 0, (int)EFFECTS::Movement);
+				audioManager_->setChannelVolume(5, 3);
 				tr_->velocity_.set(Vector2D({ IMPULSE * sin(M_PI * tr_->rotation_ / 180.0f), -(IMPULSE * cos(M_PI * tr_->rotation_ / 180.0)) }));
 			}
 		}
@@ -77,6 +78,8 @@ public:
 		
 		//Sale por los laterales
 		if (tr_->position_.getX() < 0.0 || tr_->position_.getX() + tr_->width_ > game_->getWindowWidth()) {
+			audioManager_->playChannel(Resources::Rebound, 0, 7);
+			audioManager_->setChannelVolume(6, 7);
 			tr_->velocity_.set(-tr_->velocity_.getX(), tr_->velocity_.getY());		//Se cambia la velocidad
 			tr_->rotation_ = -tr_->rotation_;										//Se cambia la rotación	
 			//Se evita que se quede fuera de los límites de la pantalla (BUG)
@@ -86,6 +89,8 @@ public:
 
 		//Sale por los extremos
 		if (tr_->position_.getY() < 0.0 || tr_->position_.getY() + tr_->height_ > game_->getWindowHeight()) {
+			audioManager_->playChannel(Resources::Rebound, 0, 7);
+			audioManager_->setChannelVolume(6, 7);
 			tr_->velocity_.set(tr_->velocity_.getX(), -tr_->velocity_.getY());		//Se cambia la velocidad
 			tr_->rotation_ = (180 - tr_->rotation_);								//Se cambia la rotación
 			//Se evita que se quede fuera de los límites de la pantalla (BUG)
@@ -97,7 +102,9 @@ public:
 		tr_->position_.setY(tr_->position_.getY() + tr_->velocity_.getY());
 	}
 private:
-	Entity* fighter_;
-	Transform* tr_;
+	Entity* fighter_ = nullptr;
+	Transform* tr_ = nullptr;
+	InputHandler* inputHandler_ = nullptr;
+	AudioManager* audioManager_ = nullptr;
 };
 

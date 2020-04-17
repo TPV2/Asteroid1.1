@@ -29,7 +29,7 @@ void PacMan::initGame() {
 
 	game_ = SDLGame::init("Asteroids", _WINDOW_WIDTH_, _WINDOW_HEIGHT_);
 	//StarsPool::init(5);
-	AsteroidPool::init();
+	AsteroidPool::init(1);
 	BulletPool::init(30);
 
 	mngr_ = new Manager(game_);
