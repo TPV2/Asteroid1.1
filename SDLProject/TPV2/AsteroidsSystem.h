@@ -33,16 +33,17 @@ public:
 		game_->getAudioMngr()->playChannel(Resources::AudioId::Explosion, 0, (int)EFFECTS::AstExp);
 		game_->getAudioMngr()->setChannelVolume(5, (int)EFFECTS::AstExp);
 		auto astLifeTime = a->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
+		cout << "Has golpeado un asteroide de nivel: " << astLifeTime->getAstLevel() << endl;
 		astLifeTime->removeLevel();
 		if (astLifeTime->getAstLevel() >= 1) {
 			//el asteroide original
 			Transform* origialAst = a->getComponent<Transform>(ecs::Transform);
 			//Primer asteroide
+			int ast1Lvl = astLifeTime->getAstLevel();
 			Vector2D ast1Pos = origialAst->position_;
-			Vector2D ast1Scale = { origialAst->width_ / 2,origialAst->height_ / 2 };
+			Vector2D ast1Scale = { ASTEROID_W + ASTEROID_DIFERENCE * ast1Lvl, ASTEROID_H + ASTEROID_DIFERENCE * ast1Lvl };
 			Vector2D ast1Vel = {origialAst->velocity_.getX(),0};
 			double ast1Rot = origialAst->rotation_;
-			int ast1Lvl = astLifeTime->getAstLevel();
 			Uint32 ast1CurrLifeTime = game_->getTime();
 			Entity* ast1 = mngr_->addEntity<AsteroidPool>(ast1Pos, ast1Scale, ast1Vel, ast1Rot, ast1Lvl, ast1CurrLifeTime);
 			if (ast1 != nullptr) {
@@ -51,11 +52,11 @@ public:
 			}
 
 			//Segundo asteroide
+			int ast2Lvl = astLifeTime->getAstLevel();
 			Vector2D ast2Pos = origialAst->position_;
-			Vector2D ast2Scale = { origialAst->width_ / 2,origialAst->height_ / 2 };
+			Vector2D ast2Scale = { ASTEROID_W + ASTEROID_DIFERENCE * ast2Lvl, ASTEROID_H + ASTEROID_DIFERENCE * ast2Lvl };
 			Vector2D ast2Vel = { 0, origialAst->velocity_.getY() };
 			double ast2Rot = origialAst->rotation_;
-			int ast2Lvl = astLifeTime->getAstLevel();
 			Uint32 ast2CurrLifeTime = game_->getTime();
 			Entity* ast2 = mngr_->addEntity<AsteroidPool>(ast2Pos, ast2Scale, ast2Vel, ast2Rot, ast2Lvl, ast2CurrLifeTime);
 			if (ast2 != nullptr) {
@@ -70,9 +71,9 @@ public:
 	void addAsteroids(std::size_t n) {
 		for (auto i(0u); i < n; i++) {
 			int rotation = game_->getRandGen()->nextInt(1, 2);
-			int level = game_->getRandGen()->nextInt(0, MAX_LEVEL);
+			int level = game_->getRandGen()->nextInt(0, MAX_LEVEL) + 1;	//Asteroides nivel 3 - 2 - 1 (0 es cuando se destuye)
 			Vector2D pos;
-			double width = 25 + 10 * level, height = 25 + 10 * level;
+			double width = ASTEROID_W + ASTEROID_DIFERENCE * level, height = ASTEROID_H + ASTEROID_DIFERENCE * level;
 			SDL_Rect fighterBox;
 			do{
 				pos = { (double)game_->getRandGen()->nextInt(0 , game_->getWindowWidth()),
@@ -136,7 +137,7 @@ private:
 	//Asteroides
 	const double ASTEROID_W = 16;
 	const double ASTEROID_H = 16;
-	const double ASTEROID_DIFERENCE = 8;
+	const double ASTEROID_DIFERENCE = 12;
 	const double ASTEROID_MAX_VEL = 2.6;
 	const double ASTEROID_MIN_VEL = 1.2;
 };

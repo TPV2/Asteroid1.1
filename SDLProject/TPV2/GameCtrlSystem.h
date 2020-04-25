@@ -62,13 +62,13 @@ public:
 		switch (gS->getCurrSTate())
 		{
 		case STATE::FINISHED:
-			cout << "FINISHED" << endl;
+			//cout << "FINISHED" << endl;
 			break;
 		case STATE::STARTED:
-			cout << "STARTED" << endl;
+			//cout << "STARTED" << endl;
 			break;
 		case STATE::STOPPED:
-			cout << "STOPED" << endl;
+			//cout << "STOPED" << endl;
 			break;
 		default:
 			break;

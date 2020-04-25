@@ -66,11 +66,11 @@ public:
 
 private:
 	//Constructor por defecto a 10 asterorides
-	static const int INIT_AST = 15;
+	static const int AST_POOL_SIZE = 30;
 
 	//Pool de asteroides
 	ObjectPool<Entity> pool_;
-	AsteroidPool() : AsteroidPool(INIT_AST) {};
+	AsteroidPool() : AsteroidPool(AST_POOL_SIZE) {};
 	
 	//Constructor de los asteroides
 	AsteroidPool(std::size_t n) :
