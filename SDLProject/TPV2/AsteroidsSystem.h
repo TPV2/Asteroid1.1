@@ -7,6 +7,7 @@
 #include <SDL_stdinc.h> // for Uint32
 #include "SDLGame.h" //Para audio manager
 #include "SDL_macros.h"
+#include <stdlib.h>
 
 
 class AsteroidsSystem :
@@ -33,16 +34,17 @@ public:
 		game_->getAudioMngr()->playChannel(Resources::AudioId::Explosion, 0, (int)EFFECTS::AstExp);
 		game_->getAudioMngr()->setChannelVolume(5, (int)EFFECTS::AstExp);
 		auto astLifeTime = a->getComponent<AsteroidLifeTime>(ecs::AsteroidLifeTime);
-		cout << "Has golpeado un asteroide de nivel: " << astLifeTime->getAstLevel() << endl;
+		//cout << "Has golpeado un asteroide de nivel: " << astLifeTime->getAstLevel() << endl;
 		astLifeTime->removeLevel();
 		if (astLifeTime->getAstLevel() >= 1) {
 			//el asteroide original
 			Transform* origialAst = a->getComponent<Transform>(ecs::Transform);
+
 			//Primer asteroide
 			int ast1Lvl = astLifeTime->getAstLevel();
 			Vector2D ast1Pos = origialAst->position_;
 			Vector2D ast1Scale = { ASTEROID_W + ASTEROID_DIFERENCE * ast1Lvl, ASTEROID_H + ASTEROID_DIFERENCE * ast1Lvl };
-			Vector2D ast1Vel = {origialAst->velocity_.getX(),0};
+			Vector2D ast1Vel = generarSpeed();
 			double ast1Rot = origialAst->rotation_;
 			Uint32 ast1CurrLifeTime = game_->getTime();
 			Entity* ast1 = mngr_->addEntity<AsteroidPool>(ast1Pos, ast1Scale, ast1Vel, ast1Rot, ast1Lvl, ast1CurrLifeTime);
@@ -55,7 +57,7 @@ public:
 			int ast2Lvl = astLifeTime->getAstLevel();
 			Vector2D ast2Pos = origialAst->position_;
 			Vector2D ast2Scale = { ASTEROID_W + ASTEROID_DIFERENCE * ast2Lvl, ASTEROID_H + ASTEROID_DIFERENCE * ast2Lvl };
-			Vector2D ast2Vel = { 0, origialAst->velocity_.getY() };
+			Vector2D ast2Vel = generarSpeed();
 			double ast2Rot = origialAst->rotation_;
 			Uint32 ast2CurrLifeTime = game_->getTime();
 			Entity* ast2 = mngr_->addEntity<AsteroidPool>(ast2Pos, ast2Scale, ast2Vel, ast2Rot, ast2Lvl, ast2CurrLifeTime);
@@ -82,9 +84,7 @@ public:
 			}
 			while (checkPlayerPos(&fighterBox));
 
-			Vector2D speed{ 0,0 };
-			while (speed.getX() == 0) speed.setX(game_->getRandGen()->nextInt(MIN_SPEED, MAX_SPEED));
-			while (speed.getY() == 0) speed.setY(game_->getRandGen()->nextInt(MIN_SPEED, MAX_SPEED));
+			Vector2D speed = generarSpeed();
 
 			Uint32 lt = game_->getRandGen()->nextInt(MIN_LIFE_TIME, MAX_LIFE_TIME);
 
@@ -122,13 +122,24 @@ public:
 	//Devuelve la cantidad de asteroides activos en el juego
 	const int getAsteroidsActive() { return asteroidsActive; };
 	
+	//Genera una velocidad aleatoria para los meteoritos
+	Vector2D generarSpeed() {
+		Vector2D speed{ 0,0 };
+		//Para evitar meteoritos con velocidades muy pequeñas (parados)
+		while (abs(speed.getX()) < 1.5 && abs(speed.getY()) < 1.5) {
+			speed.setX(game_->getRandGen()->nextInt(MIN_SPEED * 10, MAX_SPEED * 10) / 10.0);	//Para que el double 2.6 pase a se 26 y se calcule bien el int aleatorio
+			speed.setY(game_->getRandGen()->nextInt(MIN_SPEED * 10, MAX_SPEED * 10) / 10.0);
+		}
+		//cout << "SPEED: {" << speed.getX() << ", " << speed.getY() << "}" << endl;
+		return speed;
+	}
 private:
 	//Cantidad de asteroides activos
 	int asteroidsActive = 0;
 
 	const int MAX_LEVEL = 3;
-	const double MIN_SPEED = -2.5;
-	const double MAX_SPEED = 2.5;
+	const double MIN_SPEED = -2.6;
+	const double MAX_SPEED = 2.6;
 	const double MIN_SCALE = 30;
 	const double MAX_SCALE = 50;
 	//En segundos
@@ -138,7 +149,6 @@ private:
 	const double ASTEROID_W = 16;
 	const double ASTEROID_H = 16;
 	const double ASTEROID_DIFERENCE = 12;
-	const double ASTEROID_MAX_VEL = 2.6;
-	const double ASTEROID_MIN_VEL = 1.2;
+
 };
 

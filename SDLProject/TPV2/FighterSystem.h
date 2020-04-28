@@ -11,7 +11,7 @@
 
 
 const int IMPULSE = 10;
-const int ANGLE_VEL = 10;
+const int ANGLE_VEL = 12;
 const double DECREASE_VEL = 0.97;
 
 class FighterSystem :

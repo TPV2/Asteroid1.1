@@ -65,7 +65,7 @@ public:
 	}
 
 private:
-	//Constructor por defecto a 10 asterorides
+	//Constructor por defecto a 30 asterorides
 	static const int AST_POOL_SIZE = 30;
 
 	//Pool de asteroides
@@ -75,7 +75,7 @@ private:
 	//Constructor de los asteroides
 	AsteroidPool(std::size_t n) :
 		pool_(n) {
-		cout << pool_.getPool().size() << endl;
+		//cout << pool_.getPool().size() << endl;
 		for (Entity* e : pool_.getPool()) {
 			e->addComponent<Transform>();
 			e->addComponent<Rotation>();
@@ -83,6 +83,5 @@ private:
 			e->addComponent<ImageComponent>(SDLGame::instance()->getTextureMngr()->getTexture(Resources::Asteroid));
 		}
 	}
-
 };
 

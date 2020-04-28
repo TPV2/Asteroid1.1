@@ -13,7 +13,7 @@ class FighterGun :
 {
 private:
 	//Tiempo en milisegundos que hay entre disparos
-	Uint32 shootDelay = 2500;
+	Uint32 shootDelay = 1250;
 	//Representa el ultimo disparo que se hizo
 	Uint32 lastShoot = 0;
 	//Valor del ancho de la bala

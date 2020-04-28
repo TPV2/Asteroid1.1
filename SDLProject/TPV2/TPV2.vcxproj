@@ -43,8 +43,7 @@
     <ClCompile Include="ObjectFactory.cpp" />
     <ClCompile Include="ObjectPool.cpp" />
     <ClCompile Include="OFFacotry.cpp" />
-    <ClCompile Include="PacMan.cpp" />
-    <ClCompile Include="PacManSystem.cpp" />
+    <ClCompile Include="Asterids.cpp" />
     <ClCompile Include="RandomNumberGenerator.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="Resources.cpp" />
@@ -55,8 +54,6 @@
     <ClCompile Include="sdl_macros.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="SRandBasedGenerator.cpp" />
-    <ClCompile Include="StarsPool.cpp" />
-    <ClCompile Include="StarsSystem.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TexturesManager.cpp" />
@@ -93,8 +90,7 @@
     <ClInclude Include="ObjectFactory.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="OFFacotry.h" />
-    <ClInclude Include="PacMan.h" />
-    <ClInclude Include="PacManSystem.h" />
+    <ClInclude Include="Asteroids.h" />
     <ClInclude Include="RandomNumberGenerator.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Resources.h" />
@@ -107,8 +103,6 @@
     <ClInclude Include="SDL_macros.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SRandBasedGenerator.h" />
-    <ClInclude Include="StarsPool.h" />
-    <ClInclude Include="StarsSystem.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TexturesManager.h" />

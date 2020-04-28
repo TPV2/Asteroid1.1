@@ -111,22 +111,10 @@
     <ClCompile Include="OFFacotry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PacMan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PacManSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Singleton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StarsPool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StarsSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="System.cpp">
@@ -157,6 +145,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Asterids.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -236,16 +227,10 @@
     <ClInclude Include="OFFacotry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PacMan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Rotation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StarsPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AsteroidPool.h">
@@ -281,12 +266,6 @@
     <ClInclude Include="RenderSystem.h">
       <Filter>Header Files\Otros sistemas</Filter>
     </ClInclude>
-    <ClInclude Include="PacManSystem.h">
-      <Filter>Header Files\Otros sistemas</Filter>
-    </ClInclude>
-    <ClInclude Include="StarsSystem.h">
-      <Filter>Header Files\Otros sistemas</Filter>
-    </ClInclude>
     <ClInclude Include="System.h">
       <Filter>Header Files\Otros sistemas</Filter>
     </ClInclude>
@@ -310,6 +289,9 @@
     </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>Header Files\Otros componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="Asteroids.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
